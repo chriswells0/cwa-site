@@ -1,0 +1,70 @@
+Options -Indexes
+
+ErrorDocument 400 /error/view/400
+ErrorDocument 401 /error/view/401
+ErrorDocument 403 /error/view/403
+ErrorDocument 404 /error/view/404
+ErrorDocument 405 /error/view/405
+ErrorDocument 408 /error/view/408
+ErrorDocument 410 /error/view/410
+ErrorDocument 411 /error/view/411
+ErrorDocument 412 /error/view/412
+ErrorDocument 413 /error/view/413
+ErrorDocument 414 /error/view/414
+ErrorDocument 415 /error/view/415
+ErrorDocument 417 /error/view/417
+ErrorDocument 500 /error/view/500
+ErrorDocument 501 /error/view/501
+ErrorDocument 502 /error/view/502
+ErrorDocument 503 /error/view/503
+
+# These headers are recommended for security reasons.  If you set them in
+# Apache, then you should set them to null in config/config.php. -- cwells
+# Great resource:  https://github.com/h5bp/server-configs-apache
+#<IfModule mod_headers.c>
+#    Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains"
+#    Header set X-Content-Type-Options "nosniff"
+
+# These do not need to be set for all file types, so they are unset in those cases. -- cwells
+#    Header set Content-Security-Policy "frame-ancestors 'none'"
+#    Header set X-Frame-Options "DENY"
+#    Header set X-XSS-Protection "1; mode=block"
+#    <FilesMatch "\.(appcache|atom|bbaw|bmp|crx|css|cur|eot|f4[abpv]|flv|geojson|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|topojson|tt[cf]|txt|vcard|vcf|vtt|webapp|web[mp]|webmanifest|woff2?|xloc|xml|xpi)$">
+#        Header unset Content-Security-Policy
+#        Header unset X-Frame-Options
+#        Header unset X-XSS-Protection
+#    </FilesMatch>
+#</IfModule>
+
+DirectorySlash Off
+
+RewriteEngine On
+RewriteBase /
+
+# Redirect www to non-www.
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# Redirect http to https.
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Redirect root to the site index.
+RewriteRule ^/?$ /site [R=302,QSA,L]
+
+# If the URL ends with a trailing slash, remove it.
+RewriteRule ^(.*)/$ $1 [R=302,QSA,L]
+
+# Files inside the public directory and main.php are the only directly accessible files.
+RewriteRule ^public/ - [L]
+RewriteRule ^application/main\.php - [L]
+
+# If the requested file path exists under the public directory, rewrite to the path inside public.
+RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -f
+RewriteRule ^(.+)$ public/$1 [QSA,L]
+
+# All other URLs:
+# If there is only one "directory" in the URL path, use it as the controller name and call its default method.
+RewriteRule ^([^/]*)/?$ /application/main.php?controller=$1&method=index [QSA,L]
+# Interpret more than one "directory" in the URL path as /<controller>/<method>/<parameter>
+RewriteRule ^([^/]*)/([^/]*)(/([^/]*))?$ /application/main.php?controller=$1&method=$2&parameter=$4 [QSA,L]
