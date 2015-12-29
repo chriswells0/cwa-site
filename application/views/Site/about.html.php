@@ -2,7 +2,7 @@
 					<h1>About This Site</h1>
 					<div class="content-body">
 						<p>To update this page, <a href="/account/login">log in</a> as an admin or developer and edit <a href="/admin/code/views~Site~about.html.php">about.html.php</a>.</p>
-						<p><a href="https://github.com/chriswells0/cwa-site" title="View the CWA Site project" rel="external">Core Web Application Site</a> was built to provide a fully-functional example of how to use the <a href="https://github.com/chriswells0/cwa" title="View the CWA project" rel="external">Core Web Application</a> libraries to create a basic website. It gives developers a baseline to launch new sites quickly by addressing many of the details that should be included in every site. It follows industry best practices to make it simpler for developers to do the same.</p>
+						<p><a href="https://github.com/chriswells0/cwa-site" title="View the CWA Site project" rel="external">Core Web Application Site</a> was built to provide a fully-functional example of how to use the <a href="https://github.com/chriswells0/cwa-lib" title="View the CWA Libraries project" rel="external">Core Web Application Libraries</a> to create a basic website. It gives developers a baseline to launch new sites quickly by addressing many of the details that should be included in every site. It follows industry best practices to make it simpler for developers to do the same.</p>
 						<p>Some features included in <a href="https://github.com/chriswells0/cwa-site" title="View the CWA Site project" rel="external">Core Web Application Site</a>:</p>
 						<ul>
 							<li>A "starter" website with a home page, about page, and contact form.</li>
@@ -32,7 +32,7 @@
 									<li>Sessions are pinned to the user's IP and user agent string to thwart hijacking.</li>
 								</ul>
 							</li>
-							<li>Plus even more features provided by the <a href="https://github.com/chriswells0/cwa" title="View the CWA project" rel="external">Core Web Application</a> libraries!</li>
+							<li>Plus even more features provided by the <a href="https://github.com/chriswells0/cwa-lib" title="View the CWA Libraries project" rel="external">Core Web Application Libraries</a>!</li>
 						</ul>
 					</div>
 				</div>

@@ -2,7 +2,7 @@
 					<h1>Home Page</h1>
 					<div class="content-body">
 						<p>To update this page, <a href="/account/login">log in</a> as an admin or developer and edit <a href="/admin/code/views~Site~index.html.php">index.html.php</a>.</p>
-						<p><a title="View the CWA Site project" href="https://github.com/chriswells0/cwa-site" rel="external">Core Web Application Site</a> was created to help developers quickly launch new sites leveraging the <a title="View the CWA project" href="https://github.com/chriswells0/cwa" rel="external">Core Web Application</a> libraries. It's designed to be easily customized and extended.</p>
+						<p><a title="View the CWA Site project" href="https://github.com/chriswells0/cwa-site" rel="external">Core Web Application Site</a> was created to help developers quickly launch new sites leveraging the <a href="https://github.com/chriswells0/cwa-lib" title="View the CWA Libraries project" rel="external">Core Web Application Libraries</a>. It's designed to be easily customized and extended.</p>
 						<p>Be sure to visit the <a title="Administer this site" href="../../admin">Site Admin</a> section to familiarize yourself with the built-in tools. Although it's not on the main menu, there's also a dynamic <a title="View the site map" href="../../site/map">site map</a> that you can use as a reference for the main URLs.</p>
 						<h2>Getting Started</h2>
 						<p>These steps should be performed right away:</p>
@@ -28,6 +28,6 @@
 							<li>Be sure to replace <span class="label">/public/images/logo.png</span> and <span class="label">/public/favicon.ico</span> with your own images.</li>
 							<li>Role-based permissions are set in <a href="../../admin/code/main.php">/application/main.php</a>.</li>
 						</ol>
-						<p>Once you've customized the site, it's recommended that you delete the main <span class="label">.gitignore</span> and <span class="label">.gitmodules</span> files as well as the <span class="label">.git</span> directory. Then update the <a title="View the CWA project" href="https://github.com/chriswells0/cwa" rel="external">Core Web Application</a> libraries regularly using git inside the <span class="label">/lib/cwa</span> directory.</p>
+						<p>Once you've customized the site, it's recommended that you delete the main <span class="label">.gitignore</span> and <span class="label">.gitmodules</span> files as well as the <span class="label">.git</span> directory. Then update the <a href="https://github.com/chriswells0/cwa-lib" title="View the CWA Libraries project" rel="external">Core Web Application Libraries</a> regularly using git inside the <span class="label">/lib/cwa</span> directory.</p>
 					</div>
 				</div>

@@ -1,7 +1,7 @@
 				<div class="content">
 					<h1>Site Credits</h1>
 					<div class="content-body">
-						<p>To update this page, <a href="/account/login">log in</a> as an admin or developer and edit <a href="/admin/code/views~Site~credits.html.php">credits.html.php</a>. If you choose to include this page on your site, we'd appreciate a link to the <a title="View the CWA project" href="https://github.com/chriswells0/cwa" rel="external">Core Web Application</a> project on your list.</p>
+						<p>To update this page, <a href="/account/login">log in</a> as an admin or developer and edit <a href="/admin/code/views~Site~credits.html.php">credits.html.php</a>. If you choose to include this page on your site, we'd appreciate a link to the <a href="https://github.com/chriswells0/cwa-lib" title="View the CWA Libraries project" rel="external">Core Web Application Libraries</a> project on your list.</p>
 						<p>Core Web Application Site leverages several components from around the web. To give credit where it's due, those resources are listed here in no particular order.</p>
 						<ul>
 							<li>Life's too short not to use <a href="http://jquery.com/" title="Visit the jQuery site" rel="external">jQuery</a>.</li>
