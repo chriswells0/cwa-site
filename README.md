@@ -7,13 +7,17 @@ Core Web Application Site provides a fully-functional example of how to use the 
 * A "starter" website with a home page, about page, and contact form.
 * Responsive design that works well at multiple screen resolutions on devices of all sizes.
 * Search engine (and human!) friendly URLs with a consistent format: /controller/method/parameter
+* Ability to return data in a variety of content types such as HTML, JSON, or Atom/RSS by creating new view templates.
 * Includes structured data to improve indexing by search engines.
-* Error pages that can be easily customized for all errors or by HTTP status code.
+* Error pages match the site design and can be easily customized for all errors or by HTTP status code.
 * Site Admin section with multiple tools to facilitate common tasks:
-  * Code Editor
-  * DB Administrator
-  * Log Viewer
-  * QA Assistant
+  * Code Editor for minor ad-hoc changes
+  * DB Administrator to perform queries and database backups
+  * Log Viewer with filtering options
+  * QA Assistant to review methods, parameters, and permissions
+
+##### Features From [Core Web Application Libraries](https://github.com/chriswells0/cwa-lib)
+
 * Lightweight and flexible base classes make it easy to master and extend the code.
 * Uses the MVC design pattern and other web application best practices.
 * Many built-in protections against common web application vulnerabilities/exploits:
@@ -25,7 +29,6 @@ Core Web Application Site provides a fully-functional example of how to use the 
   * User passwords are stored strongly hashed and salted.
   * Full session teardown and recreation upon login to inhibit session fixation.
   * Sessions are pinned to the user's IP and user agent string to thwart hijacking.
-* Plus even more features provided by the [Core Web Application Libraries](https://github.com/chriswells0/cwa-lib)!
 
 ## Database Setup
 
