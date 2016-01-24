@@ -271,11 +271,13 @@ div.label {
 .visual-left {
 	float: left;
 	margin-right: 20px;
+	max-width: 400px;
 }
 
 .visual-right {
 	float: right;
 	margin-left: 20px;
+	max-width: 400px;
 }
 
 .visual > img, .visual > a > img {
@@ -324,6 +326,10 @@ div.label {
 
 	.visible-tablet {
 		display: inherit;
+	}
+
+	.visual-left, .visual-right {
+		max-width: 100%;
 	}
 }
 
