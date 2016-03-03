@@ -24,7 +24,7 @@ if (!is_null($this->getCanonicalURL())) {
 		} else {
 			top.location = self.location;
 		}
-		var analyticsID = "<?= (defined('ANALYTICS_ID') ? ANALYTICS_ID : '') ?>";
+		var analyticsID = "<?= (defined('ANALYTICS_ID') && is_null($GLOBALS['app']->getAuthorizedRoles()) ? ANALYTICS_ID : '') ?>";
 		</script>
 
 		<script type="application/ld+json">
