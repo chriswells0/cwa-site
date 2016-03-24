@@ -107,13 +107,13 @@ $("#contact-form").on("submit", function (e) {
 			null,
 			"json"
 		).always(function (data, textStatus, jqXHR) {
-			if (data.statusCode && data.statusCode === 200) {
-				$("#loading").text(data.statusMessage);
+			if (data.status && data.status.code === 200) {
+				$("#loading").text(data.status.message);
 			} else {
-				var response = data.responseJSON || {"statusMessage": "An unspecified error has occurred. Please try again."};
+				var response = data.responseJSON || { "status": { "message": "An unspecified error has occurred. Please try again." }};
 				$("#loading").hide();
 				$("#contact-form").show();
-				$("#form-error").text(response.statusMessage);
+				$("#form-error").text(response.status.message);
 			}
 		});
 	}

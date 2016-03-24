@@ -7,8 +7,10 @@ array_walk_recursive($data, function (&$value, $key) {
 });
 ?>
 {
-	"statusCode": <?= $this->getStatusCode() ?>,
-	"statusMessage": "<?= $this->getStatusMessage() ?>",
+	"status": {
+		"code": <?= $this->getStatusCode() ?>,
+		"message": "<?= $this->getStatusMessage() ?>"
+	},
 	"data": <?= json_encode($data) ?>
 
 }
