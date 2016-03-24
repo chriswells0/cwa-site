@@ -219,6 +219,13 @@ td > .actions {
 	color: #f00;
 }
 
+.intro {
+	border: 1px solid #999;
+	border-radius: 10px;
+	font-style: italic;
+	padding: 15px;
+}
+
 strong, .label {
 	font-weight: bold;
 }
