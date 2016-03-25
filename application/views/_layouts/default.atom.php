@@ -24,7 +24,7 @@ echo $lastUpdated->format(DateTime::ATOM);
 	<rights>Copyright (c) 2014-<?= date('Y') . ', ' . SITE_AUTHOR ?></rights>
 
 <?php
-$idPrefix = 'tag:' . DOMAIN . ',2015:' . get_class($Items[0]) . ':';
+$idPrefix = 'tag:' . DOMAIN . ',2015:' . $ModelType . ':';
 require_once $this->pathToPartial;
 ?>
 
