@@ -166,11 +166,29 @@
 					itemID = href.substr(href.lastIndexOf("/") + 1),
 					postData = { "itemID": itemID };
 				postData[CWA.MVC.View.syncToken.name] = CWA.MVC.View.syncToken.value;
-				$.post(href, postData, function (response) {
-					if (response && response.data && response.data.ControllerURL) {
-						window.location.href = response.data.ControllerURL + "/admin";
+				$.ajax({
+					type: "POST",
+					url: href,
+					data: postData,
+					dataType: "json",
+					complete: function (jqXHR) {
+						var response = jqXHR.responseJSON,
+							unknownError = "An error occurred while deleting the specified item.";
+						if (!response || !response.status) {
+							alert(unknownError);
+						} else if (response.status.code !== 200) {
+							alert(response.status.message || unknownError);
+						} else { // The item was deleted. -- cwells
+							if (response.data && response.data.NextURL) {
+								window.location.href = response.data.NextURL;
+							} else if (response.data && response.data.ControllerURL) {
+								window.location.href = response.data.ControllerURL;
+							} else {
+								alert("Successfully deleted the specified item.");
+							}
+						}
 					}
-				}, "json");
+				});
 			}
 		},
 		createSlug: function (str) {
