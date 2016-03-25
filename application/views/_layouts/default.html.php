@@ -67,12 +67,11 @@ if (!is_null($this->getCanonicalURL())) {
 <?php
 	$syncToken = $GLOBALS['app']->getSyncToken();
 	if (is_null($syncToken)) {
-		echo '			CWA.MVC.View.syncToken = { name: "", value: "" };';
+		echo '			CWA.MVC.View.syncToken = { name: "", value: "" };' . PHP_EOL;
 	} else {
-		echo '			CWA.MVC.View.syncToken = { name: "' . $syncToken['name'] . '", value: "' . $syncToken['value'] . '" };';
+		echo '			CWA.MVC.View.syncToken = { name: "' . $syncToken['name'] . '", value: "' . $syncToken['value'] . '" };' . PHP_EOL;
 	}
 ?>
-
 		</script>
 	</body>
 </html>
