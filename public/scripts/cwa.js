@@ -163,8 +163,10 @@
 			e.preventDefault();
 			if (confirm("Are you sure you want to delete this item?")) {
 				var href = $(this).attr("href"),
-					itemID = href.substr(href.lastIndexOf("/") + 1);
-				$.post(href, { "itemID": itemID }, function (response) {
+					itemID = href.substr(href.lastIndexOf("/") + 1),
+					postData = { "itemID": itemID };
+				postData[CWA.MVC.View.syncToken.name] = CWA.MVC.View.syncToken.value;
+				$.post(href, postData, function (response) {
 					if (response && response.data && response.data.ControllerURL) {
 						window.location.href = response.data.ControllerURL + "/admin";
 					}

@@ -62,8 +62,17 @@ if (!is_null($this->getCanonicalURL())) {
 	require_once 'views/_shared/footer.php';
 ?>
 			</div>
-<?php
-?>
 		</div>
+		<script>
+<?php
+	$syncToken = $GLOBALS['app']->getSyncToken();
+	if (is_null($syncToken)) {
+		echo '			CWA.MVC.View.syncToken = { name: "", value: "" };';
+	} else {
+		echo '			CWA.MVC.View.syncToken = { name: "' . $syncToken['name'] . '", value: "' . $syncToken['value'] . '" };';
+	}
+?>
+
+		</script>
 	</body>
 </html>
