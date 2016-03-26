@@ -38,6 +38,7 @@ require_once 'views/_shared/status.html.php';
 						</div>
 						<div class="form-field">
 							<label for="Roles[]">Roles</label>
+							<input type="hidden" name="Roles[]" value="" />
 							<select name="Roles[]" id="Roles[]" multiple="multiple" size="5">
 <?php
 foreach($Roles as $Role) {

@@ -22,6 +22,7 @@ require_once 'views/_shared/status.html.php';
 						</div>
 						<div class="form-field">
 							<label for="Users[]">Users</label>
+							<input type="hidden" name="Users[]" value="" />
 							<select name="Users[]" id="Users[]" multiple="multiple" size="5">
 <?php
 foreach($Users as $User) {
