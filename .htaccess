@@ -67,4 +67,4 @@ RewriteRule ^(.+)$ public/$1 [QSA,L]
 # If there is only one "directory" in the URL path, use it as the controller name and call its default method.
 RewriteRule ^([^/]*)/?$ /application/main.php?controller=$1&method=index [QSA,L]
 # Interpret more than one "directory" in the URL path as /<controller>/<method>/<parameter>
-RewriteRule ^([^/]*)/([^/]*)(/([^/]*))?$ /application/main.php?controller=$1&method=$2&parameter=$4 [QSA,L]
+RewriteRule ^([^/]*)/([^/]*)(/(.*))?$ /application/main.php?controller=$1&method=$2&parameter=$4 [QSA,L]
