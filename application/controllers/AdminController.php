@@ -50,7 +50,7 @@ class AdminController extends BaseController
 				$params = '';
 				$path = '.';
 			} else {
-				$path = str_ireplace('~', '/', $params);
+				$path = $params;
 			}
 
 			if (strpos(realpath($path), realpath('.')) !== 0) {
@@ -79,7 +79,7 @@ class AdminController extends BaseController
 				$this->view->setData(array('DirectoryPath' => $path,
 											'Dirs' => $dirs,
 											'Files' => $files,
-											'PathPrefix' => (empty($params) ? 'code/' : "$params~")));
+											'PathPrefix' => "$this->pathInURL/code/" . (empty($params) ? '' : "$params/")));
 			} else {
 				throw new InvalidArgumentException('You must specify a valid file or directory path.', 400);
 			}

@@ -11,7 +11,7 @@ if (count($Dirs) === 0) {
 	echo '							<li>No directories found.</li>';
 } else {
 	foreach ($Dirs as $dir) {
-		echo "							<li><a href=\"./$PathPrefix$dir\">$dir</a></li>";
+		echo "							<li><a href=\"$PathPrefix$dir\">$dir</a></li>";
 	}
 }
 ?>
@@ -23,7 +23,7 @@ if (count($Files) === 0) {
 	echo '							<li>No files found.</li>';
 } else {
 	foreach ($Files as $file) {
-		echo "							<li><a href=\"./$PathPrefix$file\">$file</a></li>";
+		echo "							<li><a href=\"$PathPrefix$file\">$file</a></li>";
 	}
 }
 ?>

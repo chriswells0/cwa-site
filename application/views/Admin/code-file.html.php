@@ -4,7 +4,7 @@ require_once 'views/_shared/status.html.php';
 				<div class="content">
 					<h1>Code Editor</h1>
 					<div class="content-body">
-						<form action="/admin/code" method="post">
+						<form action="<?= $ControllerURL ?>/code" method="post">
 <?php if ($ReadOnly) { ?>
 							<h2>Viewing: <?= $FilePath ?></h2>
 							<p class="error">This file is not writable by the current user.</p>
