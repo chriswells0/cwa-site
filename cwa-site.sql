@@ -19,7 +19,6 @@
 -- Table structure for table `Role`
 --
 
-DROP TABLE IF EXISTS `Role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Role` (
@@ -51,7 +50,6 @@ UNLOCK TABLES;
 -- Table structure for table `User`
 --
 
-DROP TABLE IF EXISTS `User`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `User` (
@@ -85,7 +83,6 @@ UNLOCK TABLES;
 -- Table structure for table `User_Role`
 --
 
-DROP TABLE IF EXISTS `User_Role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `User_Role` (
