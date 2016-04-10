@@ -163,7 +163,7 @@
 			e.preventDefault();
 			if (confirm("Are you sure you want to delete this item?")) {
 				var href = $(this).attr("href"),
-					itemID = href.substr(href.lastIndexOf("/") + 1),
+					itemID = href.substr(href.indexOf("/delete/") + 8),
 					postData = { "itemID": itemID };
 				postData[CWA.MVC.View.syncToken.name] = CWA.MVC.View.syncToken.value;
 				$.ajax({
