@@ -24,7 +24,6 @@ class RoleController extends BaseDBController
 {
 	/* Constructor: */
 	public function __construct() {
-		$this->pathInURL = \CWA\APP_ROOT . 'roles';
 		parent::__construct();
 		$this->viewInfo['view']['title'] = '{Name} :: Roles';
 		$this->viewInfo['view']['description'] = '{Name}';

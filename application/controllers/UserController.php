@@ -25,7 +25,6 @@ class UserController extends BaseDBController
 {
 	/* Constructor: */
 	public function __construct() {
-		$this->pathInURL = \CWA\APP_ROOT . 'users';
 		parent::__construct();
 		$this->viewInfo['view']['title'] = '{Nickname} :: Users';
 		$this->viewInfo['view']['description'] = '{Nickname}';
