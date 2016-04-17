@@ -25,6 +25,7 @@
 	window.CWA = window.CWA || {};
 
 	CWA.DOM = {
+		forms: {},
 		includeScript: function (filePath, async) {
 			var regexFileName = new RegExp(filePath + "$"),
 				bIsIncluded = false,
@@ -49,6 +50,7 @@
 	CWA.DOM.Form = function (htmlForm, customOptions) {
 		// Private variables and the main object, which is returned as a public instance:
 		var jForm = $(htmlForm),
+			identifier = jForm.attr("id") || jForm.attr("name"),
 			options = $.extend({
 				autoValidate: true,
 				protectChanges: true,
@@ -152,6 +154,9 @@
 			Form.protectChanges();
 		}
 
+		if (identifier) { // Store for easy access. -- cwells
+			CWA.DOM.forms[identifier] = Form;
+		}
 		return Form;
 	};
 
