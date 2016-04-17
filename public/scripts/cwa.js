@@ -51,6 +51,7 @@
 		// Private variables and the main object, which is returned as a public instance:
 		var jForm = $(htmlForm),
 			identifier = jForm.attr("id") || jForm.attr("name"),
+			initialState = jForm.serialize(),
 			options = $.extend({
 				autoValidate: true,
 				protectChanges: true,
@@ -77,6 +78,9 @@
 				},
 				getErrorCount: function () {
 					return jForm.find(".dynamic-error:visible").length;
+				},
+				hasChanged: function () {
+					return (initialState !== jForm.serialize());
 				},
 				protectChanges: function (fields, submit, warning) {
 					fields = fields || "input:not(:button,:submit), select, textarea";
