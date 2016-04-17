@@ -61,6 +61,7 @@
 				}
 			}, customOptions),
 			Form = {
+				$: jForm,
 				addPatterns: function (newPatterns) {
 					$.extend(options.patterns, newPatterns);
 				},
