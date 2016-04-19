@@ -157,32 +157,33 @@ class SiteController extends BaseController
 				continue;
 			}
 
-			$classURL = null;
+			$classMappings = array(); // The same controller can be mapped to multiple URL paths. -- cwells
 			foreach ($appControllers as $controller => $attributes) {
 				if (isset($attributes['class']) && $attributes['class'] === $className) {
-					$classURL = \CWA\APP_ROOT . $controller;
-					break;
+					$classMappings[] = $controller;
 				}
 			}
-			if (is_null($classURL)) {
+			if (count($classMappings) === 0) {
 				continue;
 			}
 
 			$controllers[$className] = array();
-			foreach ($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-				$methodName = $method->getName();
-				if (strpos($methodName, '__') === 0) { // Methods beginning with __ are disallowed. -- cwells
-					continue;
-				} else if ($method->getNumberOfRequiredParameters() !== 0) {
-					continue;
-				} else if (!$this->app->userIsAuthorized($controller, $methodName)) {
-					continue;
-				}
+			foreach ($classMappings as $controllerURL) {
+				foreach ($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+					$methodName = $method->getName();
+					if (strpos($methodName, '__') === 0) { // Methods beginning with __ are disallowed. -- cwells
+						continue;
+					} else if ($method->getNumberOfRequiredParameters() !== 0) {
+						continue;
+					} else if (!$this->app->userIsAuthorized($controllerURL, $methodName)) {
+						continue;
+					}
 
-				if ($methodName === 'index') {
-					$controllers[$className][] = $classURL;
-				} else {
-					$controllers[$className][] = "$classURL/$methodName";
+					if ($methodName === 'index') {
+						$controllers[$className][] = $controllerURL;
+					} else {
+						$controllers[$className][] = "$controllerURL/$methodName";
+					}
 				}
 			}
 			sort($controllers[$className]);
