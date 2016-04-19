@@ -245,14 +245,13 @@ class AdminController extends BaseController
 				continue;
 			}
 
-			$classURL = null;
+			$classMappings = array(); // The same controller can be mapped to multiple URL paths. -- cwells
 			foreach ($appControllers as $controller => $attributes) {
 				if (isset($attributes['class']) && $attributes['class'] === $className) {
-					$classURL = \CWA\APP_ROOT . $controller;
-					break;
+					$classMappings[] = $controller;
 				}
 			}
-			if (is_null($classURL)) {
+			if (count($classMappings) === 0) {
 				continue;
 			}
 
@@ -265,44 +264,46 @@ class AdminController extends BaseController
 				require_once "models/$modelName.php";
 				$item = $this->app->getDatabase()->selectRandom($modelName);
 			}
-			foreach ($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-				$methodName = $method->getName();
-				if (strpos($methodName, '__') === 0) { // Methods beginning with __ are disallowed. -- cwells
-					continue;
-				} else if ($isDBController && $methodName === 'page' && !$reflectionClass->getMethod('index')->isPublic()) {
-					continue;
-				}
+			foreach ($classMappings as $controllerURL) {
+				foreach ($reflectionClass->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+					$methodName = $method->getName();
+					if (strpos($methodName, '__') === 0) { // Methods beginning with __ are disallowed. -- cwells
+						continue;
+					} else if ($isDBController && $methodName === 'page' && !$reflectionClass->getMethod('index')->isPublic()) {
+						continue;
+					}
 
-				$methodInfo = array('name' => $methodName);
-				if ($methodName === 'index') {
-					$methodInfo['url'] = $classURL;
-				} else {
-					$methodInfo['url'] = "$classURL/$methodName";
-				}
+					$methodInfo = array('name' => $methodName);
+					if ($methodName === 'index') {
+						$methodInfo['url'] = \CWA\APP_ROOT . $controllerURL;
+					} else {
+						$methodInfo['url'] = \CWA\APP_ROOT . "$controllerURL/$methodName";
+					}
 
-				$params = $method->getParameters();
-				$acceptsPageNumber = false;
-				$needsItemID = false;
-				foreach ($params as $index => $param) {
-					$acceptsPageNumber = ($param->getName() === 'pageNumber');
-					$needsItemID = (!$param->isOptional() && $param->getName() === 'itemID');
-					$matches = array();
-					preg_match('/^[^\[]* \[ ([^\]]*)]/', $param->__toString(), $matches);
-					$params[$index] = rtrim($matches[1]);
-				}
-				$methodInfo['parameters'] = $params;
-				$methodInfo['roles'] = $this->app->getAuthorizedRoles($controller, $methodName);
-				$controllers[$className][$methodInfo['url']] = $methodInfo;
+					$params = $method->getParameters();
+					$acceptsPageNumber = false;
+					$needsItemID = false;
+					foreach ($params as $index => $param) {
+						$acceptsPageNumber = ($param->getName() === 'pageNumber');
+						$needsItemID = (!$param->isOptional() && $param->getName() === 'itemID');
+						$matches = array();
+						preg_match('/^[^\[]* \[ ([^\]]*)]/', $param->__toString(), $matches);
+						$params[$index] = rtrim($matches[1]);
+					}
+					$methodInfo['parameters'] = $params;
+					$methodInfo['roles'] = $this->app->getAuthorizedRoles($controllerURL, $methodName);
+					$controllers[$className][$methodInfo['url']] = $methodInfo;
 
-				if ($needsItemID && !is_null($item)) { // Duplicate this URL with an item ID. -- cwells
-					$methodInfo['url'] .= '/' . strtolower($item->{$item->getAlternateKeyName()});
-					$controllers[$className][$methodInfo['url']] = $methodInfo;
-				} else if ($acceptsPageNumber) {
-					// Duplicate this URL with a reasonable page number and one that's likely out of bounds. -- cwells
-					$methodInfo['url'] .= '/2';
-					$controllers[$className][$methodInfo['url']] = $methodInfo;
-					$methodInfo['url'] .= '00000'; // The URL already has /2 appended. -- cwells
-					$controllers[$className][$methodInfo['url']] = $methodInfo;
+					if ($needsItemID && !is_null($item)) { // Duplicate this URL with an item ID. -- cwells
+						$methodInfo['url'] .= '/' . strtolower($item->{$item->getAlternateKeyName()});
+						$controllers[$className][$methodInfo['url']] = $methodInfo;
+					} else if ($acceptsPageNumber) {
+						// Duplicate this URL with a reasonable page number and one that's likely out of bounds. -- cwells
+						$methodInfo['url'] .= '/2';
+						$controllers[$className][$methodInfo['url']] = $methodInfo;
+						$methodInfo['url'] .= '00000'; // The URL already has /2 appended. -- cwells
+						$controllers[$className][$methodInfo['url']] = $methodInfo;
+					}
 				}
 			}
 			ksort($controllers[$className]);
