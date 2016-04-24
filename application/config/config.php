@@ -69,7 +69,6 @@ if (DOMAIN === SITE_DOMAIN) { // Production.
 /*
 define('CWA\APP_ROOT', '/');
 define('CWA\LIB_PATH', '../lib/'); // Default when LIB_PATH is not defined.
-define('CWA\STORAGE_PATH', '../storage');
 define('CWA\DB\DATETIME_DB_TO_PHP', 'D., F jS, Y @ g:i A T');
 define('CWA\DB\DATETIME_PHP_TO_DB', 'Y-m-d H:i:s');
 
