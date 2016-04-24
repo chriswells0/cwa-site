@@ -488,6 +488,10 @@ input.error, select.error, textarea.error {
 	width: 280px;
 }
 
+#Summary {
+	height: 4em;
+}
+
 #slug-gen {
 	clear: none;
 }
