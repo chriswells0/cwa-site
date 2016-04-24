@@ -174,8 +174,8 @@ td {
 
 .actions {
 	clear: right;
+	float: right;
 	line-height: 2em;
-	text-align: right;
 	white-space: nowrap;
 }
 
@@ -185,15 +185,16 @@ td {
 }
 
 td > .actions {
+	float: none;
 	text-align: center;
 }
 
-.actions > a {
+.actions > a, .actions > .links > a {
 	padding-top: 2px;
 	text-decoration: none;
 }
 
-.actions > a:hover {
+.actions > a:hover, .actions > .links > a:hover {
 	text-decoration: underline;
 }
 
@@ -456,6 +457,23 @@ input.error, select.error, textarea.error {
 	clear: both;
 	padding-top: 20px;
 	text-align: center;
+}
+
+.actions > form {
+	display: none;
+	margin-bottom: -1px;
+}
+
+.actions > form > .buttons {
+	padding-top: 0;
+}
+
+.actions > form.inline > .buttons {
+	display: inline-block;
+}
+
+.actions > form.inline > .buttons > button[type="submit"] {
+	margin-right: 0;
 }
 
 #form-error {
