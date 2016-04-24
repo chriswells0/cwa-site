@@ -61,4 +61,32 @@ $(document).ready(function () {
 			title = link.attr("title") || "";
 		link.attr("title", (title === "" ? "" : title + "\n") + "Sponsored links help support this site.");
 	});
+
+	// Load TinyMCE if needed. -- cwells
+	if ($("textarea[data-html-editor='true']").length !== 0) {
+		$.getScript("//cdn.tinymce.com/4/tinymce.min.js", function () {
+			tinyMCE.init({
+				body_class: "content",
+				body_id: "wrapper",
+				browser_spellcheck: true,
+				content_css: "/styles/all.min.css?nocache=" + Math.random(),
+				convert_urls: false,
+				importcss_append: true,
+				importcss_groups: [{title: "Custom Styles"}],
+				plugins: "code fullscreen image importcss link preview table wordcount",
+				rel_list: [
+					{ title: "None", value: "" },
+					{ title: "External", value: "external" },
+					{ title: "No Follow", value: "nofollow" },
+					{ title: "External and No Follow", value: "external nofollow" }
+				],
+				selector: "textarea[data-html-editor='true']",
+				setup: function (editor) {
+					editor.on("change", function (e) {
+						tinyMCE.triggerSave();
+					});
+				}
+			});
+		});
+	}
 });

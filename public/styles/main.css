@@ -445,6 +445,10 @@ textarea {
 	width: 100%;
 }
 
+textarea[data-html-editor='true'] {
+	visibility: hidden;
+}
+
 input.error, select.error, textarea.error {
 	background-color: #ff9;
 }
