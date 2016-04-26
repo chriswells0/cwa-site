@@ -459,6 +459,7 @@ input.error, select.error, textarea.error {
 
 .form-field > input[type='file'] {
 	margin-top: 0;
+	max-width: 220px;
 }
 
 .buttons {
