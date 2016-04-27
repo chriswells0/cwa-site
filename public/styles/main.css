@@ -238,8 +238,15 @@ div.label {
 
 .loading {
 	display: none;
-	padding: 25px;
 	text-align: center;
+}
+
+.loading > img {
+	margin: 25px;
+}
+
+.actions > .loading > img {
+	margin: 5px 35px;
 }
 
 .nowrap {
