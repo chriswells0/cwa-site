@@ -445,6 +445,10 @@ input[type='checkbox'] {
 	margin-top: 5px;
 }
 
+input[type='file'] {
+	max-width: 220px;
+}
+
 textarea {
 	box-sizing: border-box;
 	font-size: 1.1em;
@@ -466,7 +470,6 @@ input.error, select.error, textarea.error {
 
 .form-field > input[type='file'] {
 	margin-top: 0;
-	max-width: 220px;
 }
 
 .buttons {
