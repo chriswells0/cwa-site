@@ -71,6 +71,8 @@ define('CWA\APP_ROOT', '/');
 define('CWA\LIB_PATH', '../lib/'); // Default when LIB_PATH is not defined.
 define('CWA\DB\DATETIME_DB_TO_PHP', 'D., F jS, Y @ g:i A T');
 define('CWA\DB\DATETIME_PHP_TO_DB', 'Y-m-d H:i:s');
+define('CWA\IO\HASH_ALGORITHM', 'sha1');
+define('CWA\IO\STORAGE_PATH', '../storage');
 
 // It's recommended to set these headers in the Apache config.  If you do, then
 // set them to null here to prevent them from being duplicated in PHP. -- cwells
