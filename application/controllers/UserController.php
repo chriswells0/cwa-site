@@ -62,7 +62,7 @@ class UserController extends BaseDBController
 		$this->view->setData(array('Roles' => $roles, 'UserRoleIDs' => $itemRoleIDs));
 	}
 
-	public function save(array $properties) {
+	public function save(array &$properties) {
 		if (empty($properties) || !is_array($properties)) {
 			throw new InvalidArgumentException('You must provide the values to update.', 400);
 		}
