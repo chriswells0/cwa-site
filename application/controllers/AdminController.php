@@ -37,6 +37,7 @@ class AdminController extends BaseController
 		$this->viewInfo['index']['title'] = 'Site Admin';
 		$this->viewInfo['log']['name'] = 'Log Viewer';
 		$this->viewInfo['log']['title'] = 'Log Viewer :: Admin';
+		$this->viewInfo['phpinfo']['name'] = 'PHP Info';
 		$this->viewInfo['qa']['name'] = 'QA Assistant';
 		$this->viewInfo['qa']['title'] = 'QA Assistant :: Admin';
 	}
@@ -227,6 +228,11 @@ class AdminController extends BaseController
 		$this->view->setData(array('FileContents' => file_get_contents($path),
 									'FilePath' => $path,
 									'LogLevel' => \CWA\Util\LOG_LEVEL));
+	}
+
+	public function phpinfo() {
+		phpinfo();
+		exit(0);
 	}
 
 	public function qa() {
