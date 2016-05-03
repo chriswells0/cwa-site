@@ -56,7 +56,7 @@ CREATE TABLE `User` (
   `ID` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `Created` datetime NOT NULL,
   `Updated` datetime NOT NULL,
-  `LastLogin` datetime NOT NULL,
+  `LastLogin` datetime,
   `EmailAddress` varchar(50) NOT NULL,
   `PasswordHash` varchar(255) NOT NULL,
   `Nickname` varchar(15) NOT NULL,
