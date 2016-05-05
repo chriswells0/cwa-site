@@ -2,7 +2,7 @@
 					<h1>Contact Me</h1>
 					<div class="content-body">
 						<div id="loading" class="loading"><img src="/images/loading.gif" /></div>
-						<form id="contact-form" name="contact" method="post" action="" data-autoinit="false">
+						<form id="contact-form" name="contact" method="post" action="" data-auto-validate="false" data-protect-changes="false">
 							<div id="form-error" class="error"><?= $this->getStatusMessage() ?></div>
 							<div class="form-field">
 								<label for="anonymous">Remain Anonymous</label>
@@ -45,7 +45,7 @@
 				</div>
 <script>
 
-var contactForm = new CWA.DOM.Form(document.forms["contact-form"], { autoValidate: false, protectChanges: false }),
+var contactForm = CWA.DOM.forms["contact-form"],
 	defaultSubject = "Lazy Subject",
 	subject = $("#subject");
 

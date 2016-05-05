@@ -53,14 +53,14 @@
 			identifier = jForm.attr("id") || jForm.attr("name"),
 			initialState = jForm.serialize(),
 			options = $.extend({
-				autoValidate: true,
-				protectChanges: true,
+				autoValidate: "true",
+				protectChanges: "true",
 				patterns: {
 					date: /^(\d{4}-[01]\d-[0-3]\d)?$/,
 					email: /^(("[\w-\s]+")|([\w\-]+(?:\.[\w\-]+)*)|("[\w-\s]+")([\w\-]+(?:\.[\w\-]+)*))(@((?:[\w\-]+\.)*\w[\w\-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
 					tel: /^((\+\d)*\s*(\(\d{3}\)\s*)*\d{3}(-{0,1}|\s{0,1})\d{2}(-{0,1}|\s{0,1})\d{2})?$/
 				}
-			}, customOptions),
+			}, htmlForm.dataset, customOptions),
 			Form = {
 				$: jForm,
 				addPatterns: function (newPatterns) {
@@ -147,7 +147,7 @@
 				}
 			};
 
-		if (options.autoValidate) {
+		if (options.autoValidate === "true") {
 			jForm.submit(function (e) {
 				if (!Form.validate()) {
 					e.preventDefault();
@@ -155,7 +155,7 @@
 			});
 		}
 
-		if (options.protectChanges) {
+		if (options.protectChanges === "true") {
 			Form.protectChanges();
 		}
 

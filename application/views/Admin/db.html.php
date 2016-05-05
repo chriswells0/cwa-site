@@ -5,7 +5,7 @@ require_once 'views/_shared/status.html.php';
 					<a href="/admin/db/backup" title="Create a database backup" class="heading-addon">Create Backup</a>
 					<h1>Database Administrator</h1>
 					<div class="content-body">
-						<form id="db-admin" action="/admin/db" method="post" data-autoinit="false">
+						<form id="db-admin" action="/admin/db" method="post">
 <?php
 if (!empty($Tables)) {
 ?>
@@ -32,7 +32,7 @@ if (!empty($History)) {
 <?php
 }
 ?>
-							<textarea id="query" name="query" wrap="off" placeholder="Enter SQL statement to execute."><?= end($History) ?></textarea>
+							<textarea id="query" name="query" wrap="off" placeholder="Enter SQL statement to execute." autofocus required><?= end($History) ?></textarea>
 							<div class="buttons">
 								<button id="execute" name="execute" type="submit">Execute</button>
 								<button id="cancel" type="button">Cancel</button>

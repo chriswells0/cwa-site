@@ -1,7 +1,7 @@
 				<div class="content">
 					<h1>Log Viewer</h1>
 					<div class="content-body">
-						<form id="log-viewer" action="/admin/log" method="post" data-autoinit="false">
+						<form id="log-viewer" action="/admin/log" method="post" data-protect-changes="false">
 							<p>
 								<div class="label">Current Log Level:</div><?= $LogLevel ?>
 								<br />

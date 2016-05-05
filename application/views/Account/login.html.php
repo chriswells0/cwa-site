@@ -4,7 +4,7 @@ require_once 'views/_shared/status.html.php';
 				<div class="content">
 					<h1>Log In</h1>
 					<div class="content-body">
-						<form name="login" id="login" action="" method="post" data-autoinit="false">
+						<form name="login" id="login" action="" method="post" data-protect-changes="false">
 							<div class="form-field">
 								<label for="Nickname">Username</label>
 								<input type="text" name="Nickname" id="Nickname" value="" autofocus autocomplete="username" required minlength="3" maxlength="15" />
@@ -19,6 +19,3 @@ require_once 'views/_shared/status.html.php';
 						</form>
 					</div>
 				</div>
-<script>
-var loginForm = new CWA.DOM.Form(document.forms["login"], { protectChanges: false });
-</script>
