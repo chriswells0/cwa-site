@@ -637,7 +637,7 @@ input.error, select.error, textarea.error {
 	letter-spacing: 0.1em;
 	list-style: none;
 	margin-top: 90px;
-	padding-left: 10px;
+	padding-left: 7px;
 	text-transform: uppercase;
 	width: 140px;
 }
@@ -671,21 +671,18 @@ input.error, select.error, textarea.error {
 }
 
 #feed {
-	padding-left: 6px;
-}
-
-#feed > a {
-	background: url(/images/icons.png) no-repeat scroll 0 -328px transparent;
+	background: url(/images/icons.png) no-repeat scroll 115px -330px transparent;
 	color: #333;
 	display: inline-block;
 	font-size: 1.17em;
 	height: 2em;
 	line-height: 2em;
-	padding: 2px 5px 2px 30px;
+	margin-left: 11px;
+	padding-right: 30px;
 	text-decoration: none;
 }
 
-#feed > a:hover {
+#feed:hover {
 	text-decoration: underline;
 }
 
@@ -765,6 +762,11 @@ input.error, select.error, textarea.error {
 		background-position: 29px -52px;
 	}
 
+	#feed {
+		background-position: 67px -330px;
+		margin-left: 7px;
+	}
+
 	#pagination {
 		padding: 0 13% 20px;
 	}
@@ -819,13 +821,10 @@ input.error, select.error, textarea.error {
 	}
 
 	#feed {
-		padding-left: 0;
-		text-align: center;
+		background-position: 0 -330px;
+		margin-left: 5px;
+		padding: 0;
 		width: 35px;
-	}
-
-	#feed > a {
-		padding-left: 20px;
 	}
 
 	#pagination {
