@@ -54,32 +54,19 @@ class AdminController extends BaseController
 				$path = $params;
 			}
 
-			if (strpos(realpath($path), realpath('.')) !== 0) {
+			require_once \CWA\LIB_PATH . 'cwa/io/FileManager.php';
+			$fileManager = new \CWA\IO\FileManager('.');
+			if (!$fileManager->exists($params)) {
 				throw new InvalidArgumentException('The specified file does not exist within this application.', 400);
-			} else if (is_file($path)) {
+			} else if ($fileManager->isFile($params)) {
 				$this->loadView('code-file');
 				$this->view->setData(array('FileContents' => file_get_contents($path),
 											'FilePath' => $path,
 											'ReadOnly' => !is_writable($path)));
-			} else if (is_dir($path)) {
-				$dirs = array();
-				$files = array();
-				$iterator = new DirectoryIterator($path);
-				foreach ($iterator as $file) {
-					if ($file->isDot() || !$file->isReadable()) {
-						continue;
-					} else if ($file->isDir()) {
-						$dirs[] = $file->getFilename();
-					} else {
-						$files[] = $file->getFilename();
-					}
-				}
-				sort($dirs);
-				sort($files);
+			} else if ($fileManager->isDirectory($params)) {
 				$this->loadView('code-dir');
 				$this->view->setData(array('DirectoryPath' => $path,
-											'Dirs' => $dirs,
-											'Files' => $files,
+											'Directory' => $fileManager->getDirectoryListing($params),
 											'PathPrefix' => "$this->pathInURL/code/" . (empty($params) ? '' : "$params/")));
 			} else {
 				throw new InvalidArgumentException('You must specify a valid file or directory path.', 400);

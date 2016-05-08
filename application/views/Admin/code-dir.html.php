@@ -7,10 +7,10 @@
 						<h2>Directories</h2>
 						<ul>
 <?php
-if (count($Dirs) === 0) {
+if (count($Directory->Directories) === 0) {
 	echo '							<li>No directories found.</li>';
 } else {
-	foreach ($Dirs as $dir) {
+	foreach ($Directory->Directories as $dir) {
 		echo "							<li><a href=\"$PathPrefix$dir\">$dir</a></li>";
 	}
 }
@@ -19,10 +19,10 @@ if (count($Dirs) === 0) {
 						<h2>Files</h2>
 						<ul>
 <?php
-if (count($Files) === 0) {
+if (count($Directory->Files) === 0) {
 	echo '							<li>No files found.</li>';
 } else {
-	foreach ($Files as $file) {
+	foreach ($Directory->Files as $file) {
 		echo "							<li><a href=\"$PathPrefix$file\">$file</a></li>";
 	}
 }
