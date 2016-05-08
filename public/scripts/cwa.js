@@ -68,9 +68,10 @@
 					$.extend(options.patterns, newPatterns);
 				},
 				clearError: function (field) {
+					var fieldID = (field.attr("id") || field.attr("name"));
 					field.removeClass("error");
-					$("label[for='" + field.attr("id") + "']").removeClass("error");
-					$("#" + field.attr("id") + "-error").remove();
+					$("label[for='" + fieldID + "']").removeClass("error");
+					$("#" + fieldID + "-error").remove();
 				},
 				clearErrors: function () {
 					jForm.find(".dynamic-error").remove();
@@ -106,8 +107,9 @@
 					htmlForm.reset();
 				},
 				setError: function (field, message) {
-					var errorID = field.attr("id") + "-error",
-						label = $("label[for='" + field.attr("id") + "']");
+					var fieldID = (field.attr("id") || field.attr("name")),
+						errorID = fieldID + "-error",
+						label = $("label[for='" + fieldID + "']");
 					field.addClass("error");
 					label.addClass("error");
 					$("#" + errorID).remove();
