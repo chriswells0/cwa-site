@@ -63,6 +63,7 @@
 			}, htmlForm.dataset, customOptions),
 			Form = {
 				$: jForm,
+				elements: htmlForm.elements,
 				addPatterns: function (newPatterns) {
 					$.extend(options.patterns, newPatterns);
 				},
@@ -100,6 +101,9 @@
 							}
 						});
 					});
+				},
+				reset: function () {
+					htmlForm.reset();
 				},
 				setError: function (field, message) {
 					var errorID = field.attr("id") + "-error",
