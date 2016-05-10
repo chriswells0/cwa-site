@@ -207,15 +207,18 @@
 				});
 			}
 		},
-		createSlug: function (str) {
+		createSlug: function (str, allowUppercase) {
 			if (typeof str !== "string") { return ""; }
 
-			str = str.toLowerCase().replace(/'/g, ""); // Convert to lowercase and remove apostrophes.
+			if (!allowUppercase) {
+				str = str.toLowerCase();
+			}
+			str = str.replace(/'/g, ""); // Remove apostrophes.
 			str = str.replace(/&/g, "and");
 			// Allowed characters per RFC 1738:  alphanumeric and $-_.+!*'(),
 			/*jslint regexp: true */
-			str = str.replace(/[^a-z0-9$\-_.+!*()]/g, "-"); // Replace all characters except our whitelist with hyphen.
-			str = str.replace(/^[^a-z0-9]*|[^a-z0-9]*$/g, ""); // Remove non-alphanumeric from the beginning and end.
+			str = str.replace(/[^a-z0-9$\-_.+!*()]/gi, "-"); // Replace all characters except our whitelist with hyphen.
+			str = str.replace(/^[^a-z0-9]*|[^a-z0-9]*$/gi, ""); // Remove non-alphanumeric from the beginning and end.
 			str = str.replace(/--+/g, "-"); // Replace multiple hyphens with one hyphen.
 			/*jslint regexp: false */
 
