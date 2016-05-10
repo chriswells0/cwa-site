@@ -84,6 +84,7 @@ $(document).ready(function () {
 				setup: function (editor) {
 					editor.on("change", function (e) {
 						tinyMCE.triggerSave();
+						$(tinyMCE.activeEditor.targetElm).trigger("input");
 					});
 				}
 			});
