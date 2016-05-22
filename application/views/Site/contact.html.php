@@ -45,8 +45,7 @@
 				</div>
 <script>
 
-var contactForm = CWA.DOM.forms["contact-form"],
-	defaultSubject = "Lazy Subject",
+var defaultSubject = "Lazy Subject",
 	subject = $("#subject");
 
 if (subject.val() === "") subject.val(defaultSubject);
@@ -76,6 +75,7 @@ $("#contact-form").on("submit", function (e) {
 	$("#send").attr("disabled", true);
 
 	var anonymous = $("#anonymous").is(":checked"),
+		contactForm = CWA.DOM.forms["contact-form"],
 		message = $("#message");
 
 	message.val($.trim(message.val()));
@@ -126,7 +126,7 @@ function recaptchaLoaded() {
 	grecaptcha.render("g-recaptcha", {
 		"sitekey": "<?= RECAPTCHA_PUBLIC_KEY ?>",
 		"callback": function () {
-			contactForm.clearError($("#g-recaptcha"));
+			CWA.DOM.forms["contact-form"].clearError($("#g-recaptcha"));
 		}
 	});
 }
