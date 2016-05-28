@@ -287,7 +287,8 @@ div.label {
 	border: 1px solid #808080;
 	border-radius: 5px;
 	box-sizing: border-box;
-	margin: 20px 0;
+	display: table;
+	margin: 20px auto;
 	max-width: 100%;
 	padding: 5px;
 }
@@ -353,6 +354,7 @@ div.label {
 	}
 
 	.visual-left, .visual-right {
+		margin: 20px auto;
 		max-width: 100%;
 	}
 }
