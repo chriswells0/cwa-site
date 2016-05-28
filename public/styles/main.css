@@ -866,6 +866,16 @@ h1 > a:hover, h2 > a:hover {
 	color: #000;
 }
 
+h3 {
+	font-size: 1.08em;
+	font-weight: bold;
+	padding: 0 10px 2px;
+}
+
+h4 {
+	font-weight: bold;
+}
+
 .heading-addon {
 	float: right;
 	text-decoration: none;
