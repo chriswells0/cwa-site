@@ -244,6 +244,11 @@
 				CWA.MVC.View[this.dataset.cwaClick].call(this, e);
 			}
 		});
+		$("[data-cwa-focus]").focus(function (e) {
+			if (typeof CWA.MVC.View[this.dataset.cwaFocus] === "function") {
+				CWA.MVC.View[this.dataset.cwaFocus].call(this, e);
+			}
+		});
 	});
 
 }());
