@@ -235,6 +235,19 @@
 			/*jslint regexp: false */
 
 			return str;
+		},
+		suggestSlug: function (e) {
+			e.preventDefault();
+			// Only suggest a new slug when the destination is empty. -- cwells
+			if ($("#" + this.dataset.to).val() === "") {
+				CWA.MVC.View.updateSlug.call(this, e);
+			}
+		},
+		updateSlug: function (e) {
+			e.preventDefault();
+			var from = $("#" + this.dataset.from),
+				to = $("#" + this.dataset.to);
+			to.val(CWA.MVC.View.createSlug(from.val(), this.dataset.allowUppercase));
 		}
 	};
 
