@@ -501,7 +501,7 @@ input.error, select.error, textarea.error {
 	padding-left: 155px;
 }
 
-#Name, #Slug, #Title, #Value {
+#Name, #Slug, #Title, #Value, input.long {
 	width: 280px;
 }
 
@@ -524,13 +524,13 @@ input.error, select.error, textarea.error {
 		clear: left;
 	}
 
-	#Name, #Slug, #Title, #Value {
+	#Name, #Slug, #Title, #Value, input.long {
 		width: 275px;
 	}
 }
 
 @media (max-width: 500px) {
-	#Name, #Slug, #Title, #Value {
+	#Name, #Slug, #Title, #Value, input.long {
 		width: auto;
 	}
 }
