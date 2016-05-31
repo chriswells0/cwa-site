@@ -229,4 +229,13 @@
 			return str;
 		}
 	};
+
+	$(document).ready(function () {
+		$("[data-cwa-click]").click(function (e) {
+			if (typeof CWA.MVC.View[this.dataset.cwaClick] === "function") {
+				CWA.MVC.View[this.dataset.cwaClick].call(this, e);
+			}
+		});
+	});
+
 }());
