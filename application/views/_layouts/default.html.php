@@ -64,6 +64,7 @@ if (!is_null($this->getCanonicalURL())) {
 			</div>
 		</div>
 		<script>
+			CWA.MVC.ControllerURL = "<?= $ControllerURL ?>";
 <?php
 	$syncToken = $GLOBALS['app']->getSyncToken();
 	if (is_null($syncToken)) {
