@@ -179,6 +179,14 @@
 	};
 
 	CWA.MVC.View = {
+		cancelEdit: function (e) {
+			e.preventDefault();
+			if (document.referrer.indexOf(document.location.protocol + "//" + document.location.hostname) === 0) {
+				history.back(); // The referring page was on this site, so just go back. -- cwells
+			} else { // Go to the specified destination or the admin page for the current controller. -- cwells
+				document.location = this.dataset.destination || (CWA.MVC.ControllerURL + "/admin");
+			}
+		},
 		confirmDelete: function (e) {
 			e.preventDefault();
 			if (confirm("Are you sure you want to delete this item?")) {

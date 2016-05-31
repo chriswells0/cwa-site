@@ -33,7 +33,7 @@ foreach($Users as $User) {
 						</div>
 						<div class="buttons">
 							<button id="submit" type="submit">Save</button>
-							<button type="button" onclick="document.location='/roles/admin'; return false;">Cancel</button>
+							<button type="button" data-cwa-click="cancelEdit">Cancel</button>
 						</div>
 					</form>
 				</div>

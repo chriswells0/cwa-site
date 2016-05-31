@@ -13,12 +13,17 @@ require_once 'views/_shared/status.html.php';
 <?php } ?>
 							<input type="hidden" name="file-path" value="<?= $FilePath ?>" />
 							<textarea id="file-contents" name="file-contents" wrap="off" <?= $ReadOnly ? 'readonly="true"' : '' ?> placeholder="This file is empty." autofocus required><?= $FileContents ?></textarea>
-<?php if (!$ReadOnly) { ?>
+<?php
+if (!$ReadOnly) {
+	$directory = dirname($FilePath);
+?>
 							<div class="buttons">
 								<button id="submit" type="submit">Save</button>
-								<button type="button" onclick="history.back(); return false;">Cancel</button>
+								<button type="button" data-cwa-click="cancelEdit" data-destination="<?= "$ControllerURL/code" . ($directory === '.' ? '' : "/$directory") ?>">Cancel</button>
 							</div>
-<?php } ?>
+<?php
+}
+?>
 						</form>
 					</div>
 				</div>
