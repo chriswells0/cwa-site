@@ -40,7 +40,7 @@
 							<textarea id="file-contents" wrap="off" readonly="true" placeholder="No results found."><?= $FileContents ?></textarea>
 							<div class="buttons">
 								<button id="delete" name="delete" type="submit">Delete Log</button>
-								<button id="cancel" type="button">Cancel</button>
+								<button id="cancel" type="button" data-cwa-click="cancelEdit" data-destination="/admin">Cancel</button>
 							</div>
 						</form>
 					</div>
@@ -89,10 +89,5 @@ $("#reset").on("click", function () {
 
 $("#delete").on("click", function () {
 	return confirm("Are you sure you want to delete the log file?\n\nThis action cannot be undone!");
-});
-
-$("#cancel").on("click", function () {
-	history.back();
-	return false;
 });
 </script>

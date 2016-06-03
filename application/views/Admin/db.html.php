@@ -35,7 +35,7 @@ if (!empty($History)) {
 							<textarea id="query" name="query" wrap="off" placeholder="Enter SQL statement to execute." autofocus required><?= end($History) ?></textarea>
 							<div class="buttons">
 								<button id="execute" name="execute" type="submit">Execute</button>
-								<button id="cancel" type="button">Cancel</button>
+								<button id="cancel" type="button" data-cwa-click="cancelEdit" data-destination="/admin">Cancel</button>
 							</div>
 						</form>
 <?php
@@ -96,10 +96,5 @@ $("#query-history > option").last().attr("selected", "selected");
 
 $("#query-history").on("change", function () {
 	$("#query").val($(this).val());
-});
-
-$("#cancel").on("click", function () {
-	document.location = "/admin";
-	return false;
 });
 </script>
