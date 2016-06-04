@@ -239,6 +239,9 @@
 
 			return str;
 		},
+		on: function (eventName, method) {
+			$(document).bind(eventName, method);
+		},
 		suggestSlug: function (e) {
 			e.preventDefault();
 			// Only suggest a new slug when the destination is empty. -- cwells
