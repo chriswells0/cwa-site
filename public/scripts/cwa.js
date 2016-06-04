@@ -252,12 +252,12 @@
 	};
 
 	$(document).ready(function () {
-		$("[data-cwa-click]").click(function (e) {
+		$("#content-wrapper").on("click", "[data-cwa-click]", function (e) {
 			if (typeof CWA.MVC.View[this.dataset.cwaClick] === "function") {
 				CWA.MVC.View[this.dataset.cwaClick].call(this, e);
 			}
 		});
-		$("[data-cwa-focus]").focus(function (e) {
+		$("#content-wrapper").on("focus", "[data-cwa-focus]", function (e) {
 			if (typeof CWA.MVC.View[this.dataset.cwaFocus] === "function") {
 				CWA.MVC.View[this.dataset.cwaFocus].call(this, e);
 			}
