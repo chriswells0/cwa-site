@@ -862,17 +862,18 @@ form > .error {
  * Header/Headings
  * -------------------------------------------------- */
 
-h1, h2, h3, h4 {
-	clear: both;
-	font-weight: bold;
-}
-
 h1 {
 	border-bottom: 1px dotted #808080;
 	font-size: 1.5em;
+	font-weight: bold;
 	line-height: 1.2em;
 	margin: 0 -10px;
 	padding: 0 10px 4px;
+}
+
+h2, h3, h4 {
+	clear: both;
+	font-weight: bold;
 }
 
 h2 {
