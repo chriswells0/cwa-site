@@ -215,6 +215,11 @@
 			e.preventDefault();
 			if (document.referrer.indexOf(document.location.protocol + "//" + document.location.hostname) === 0) {
 				history.back(); // The referring page was on this site, so just go back. -- cwells
+				// Fallback functionality for when the page was opened in a new tab (no history). -- cwells
+				var self = this;
+				window.setTimeout(function () { // Give time for history.back() to work. -- cwells
+					document.location = self.dataset.destination || (CWA.MVC.ControllerURL + "/admin");
+				}, 200);
 			} else { // Go to the specified destination or the admin page for the current controller. -- cwells
 				document.location = this.dataset.destination || (CWA.MVC.ControllerURL + "/admin");
 			}
