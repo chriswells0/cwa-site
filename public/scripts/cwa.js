@@ -279,8 +279,9 @@
 				url = $(this).attr("href");
 			modal.load(url + (url.indexOf("?") === -1 ? "?" : "&") + "partial=true");
 		},
-		on: function (eventName, method) {
-			$(document).bind(eventName, method);
+		on: function () {
+			var jElement = $(document);
+			$(jElement).on.apply(jElement, arguments);
 		},
 		suggestSlug: function (e) {
 			e.preventDefault();
