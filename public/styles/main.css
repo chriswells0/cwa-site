@@ -482,7 +482,10 @@ input.error, select.error, textarea.error {
 
 .actions > form {
 	display: none;
-	margin-bottom: -1px;
+}
+
+li > .actions > form > input {
+	margin: 9px 0;
 }
 
 .actions > form > .buttons {
