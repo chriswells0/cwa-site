@@ -210,6 +210,7 @@
 	};
 
 	CWA.MVC.View = {
+		activeModal: null,
 		cancelEdit: function (e) {
 			e.preventDefault();
 			if (document.referrer.indexOf(document.location.protocol + "//" + document.location.hostname) === 0) {
@@ -267,6 +268,12 @@
 
 			return str;
 		},
+		loadInModal: function (e) {
+			e.preventDefault();
+			var modal = new CWA.MVC.View.Modal(),
+				url = $(this).attr("href");
+			modal.load(url + (url.indexOf("?") === -1 ? "?" : "&") + "partial=true");
+		},
 		on: function (eventName, method) {
 			$(document).bind(eventName, method);
 		},
@@ -283,6 +290,92 @@
 				to = $("#" + this.dataset.to);
 			to.val(CWA.MVC.View.createSlug(from.val(), this.dataset.allowUppercase));
 		}
+	};
+
+	CWA.MVC.View.Modal = function () {
+		// Private variables and the main object, which is returned as a public instance:
+		var jElement = $("#modal"),
+			modalBusy = $("#modal-busy"),
+			modalContainer = $("#modal-container"),
+			modalContent = $("#modal-content"),
+			Modal = {
+				$: jElement,
+				close: function () {
+					CWA.MVC.View.activeModal = null;
+					this.showBusy();
+
+					jElement.fadeOut(function () {
+						jElement.trigger("cwa-modal-closed");
+						jElement.remove();
+					});
+				},
+				load: function (url) {
+					// Add the modal element to the DOM if it does not already exist. -- cwells
+					if (jElement.length === 0) {
+						jElement = $("<div />", { id: "modal" }).appendTo($("#content-wrapper"));
+						modalContainer = $("<div />", { id: "modal-container" }).appendTo(jElement);
+						modalBusy = $("<div />", {
+							id: "modal-busy",
+							class: "content loading",
+							html: '<img src="/images/loading.gif" />'
+						}).appendTo(modalContainer);
+						modalContent = $("<div />", { id: "modal-content" }).appendTo(modalContainer);
+					}
+
+					CWA.MVC.View.activeModal = this;
+					this.showBusy();
+
+					jElement.fadeIn(function () {
+						$.get(url, function (response) {
+							self.setContent(response);
+							var forms = jElement.find("form");
+							if (forms.length !== 0) {
+								forms.each(function (index) {
+									if (this.dataset.autoinit !== "false") {
+										var form = CWA.DOM.Form(this, { ajax: "true" });
+										form.on("cwa-form-beforesubmit", function (e) {
+											self.showBusy();
+											$("#modal-error").remove();
+										});
+										form.on("cwa-form-submit-failure", function (e, response) {
+											var error = $("<div />", {
+												id: "modal-error",
+												class: "error"
+											}).prependTo(form.$);
+											error.html(response.status.message);
+											self.showContent();
+										});
+										form.on("cwa-form-submit-success", function (e) {
+											self.close();
+										});
+									}
+								});
+							}
+							jElement.find("button[data-cwa-click='cancelEdit']").off("click").on("click", function (e) {
+								e.stopPropagation();
+								self.close();
+							});
+							self.showContent(); // Content must be visible in order to set focus to an element. -- cwells
+							jElement.find("[autofocus]").focus();
+							jElement.trigger("cwa-modal-loaded");
+						});
+					});
+				},
+				setContent: function (content) {
+					modalContent.html(content);
+				},
+				showBusy: function () {
+					modalContent.hide();
+					modalBusy.show();
+				},
+				showContent: function () {
+					modalBusy.hide();
+					modalContent.show();
+				}
+			},
+			self = Modal;
+
+		return Modal;
 	};
 
 	$(document).ready(function () {
