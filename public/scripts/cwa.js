@@ -53,6 +53,7 @@
 			identifier = jForm.attr("id") || jForm.attr("name"),
 			initialState = jForm.serialize(),
 			options = $.extend({
+				ajax: "false",
 				autoValidate: "true",
 				protectChanges: "true",
 				patterns: {
@@ -66,6 +67,29 @@
 				elements: htmlForm.elements,
 				addPatterns: function (newPatterns) {
 					$.extend(options.patterns, newPatterns);
+				},
+				ajaxify: function (customSettings) {
+					jForm.submit(function (e) {
+						e.preventDefault();
+						if (Form.getErrorCount() === 0) {
+							var settings = $.extend({
+								type: jForm.attr("method").toUpperCase(),
+								url: jForm.attr("action"),
+								data: jForm.serialize(),
+								dataType: "json"
+							}, customSettings);
+							jForm.trigger("cwa-form-beforesubmit");
+							$.ajax(settings).always(function (response) {
+								if (response.status && response.status.code === 200 && response.data) {
+									jForm.trigger("cwa-form-submit-success", response);
+								} else {
+									var responseJSON = response.responseJSON || { "status": { "message": "An unspecified error has occurred. Please try again." }};
+									jForm.trigger("cwa-form-submit-failure", responseJSON);
+								}
+								jForm.trigger("cwa-form-submit-always", response);
+							});
+						}
+					});
 				},
 				clearError: function (field) {
 					var fieldID = (field.attr("id") || field.attr("name"));
@@ -166,6 +190,10 @@
 					e.preventDefault();
 				}
 			});
+		}
+
+		if (options.ajax === "true") {
+			Form.ajaxify();
 		}
 
 		if (options.protectChanges === "true") {
