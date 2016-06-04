@@ -84,6 +84,9 @@
 				hasChanged: function () {
 					return (initialState !== jForm.serialize());
 				},
+				on: function () {
+					jForm.on.apply(jForm, arguments);
+				},
 				protectChanges: function (fields, submit, warning) {
 					fields = fields || "input:not(:button,:submit), select, textarea";
 					submit = submit || "button[type='submit'], input[type='submit']";
