@@ -385,14 +385,15 @@
 	};
 
 	$(document).ready(function () {
-		$("#content-wrapper").on("click", "[data-cwa-click]", function (e) {
-			if (typeof CWA.MVC.View[this.dataset.cwaClick] === "function") {
-				CWA.MVC.View[this.dataset.cwaClick].call(this, e);
-			}
-		});
-		$("#content-wrapper").on("focus", "[data-cwa-focus]", function (e) {
-			if (typeof CWA.MVC.View[this.dataset.cwaFocus] === "function") {
-				CWA.MVC.View[this.dataset.cwaFocus].call(this, e);
+		CWA.MVC.View.on("blur click focus", "[data-cwa-blur], [data-cwa-click], [data-cwa-focus]", function (e) {
+			var eventAttribute = "data-cwa-" + e.handleObj.origType,
+				eventHandlerName = $(e.target).attr(eventAttribute);
+			if (eventHandlerName) {
+				if (typeof CWA.MVC.View[eventHandlerName] === "function") {
+					CWA.MVC.View[eventHandlerName].call(e.target, e);
+				} else if (typeof window[eventHandlerName] === "function") {
+					window[eventHandlerName].call(e.target, e);
+				}
 			}
 		});
 	});
