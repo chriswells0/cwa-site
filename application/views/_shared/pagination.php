@@ -1,6 +1,6 @@
 <?php
 if (!empty($PreviousPage) || !empty($NextPage)) {
-	echo '<div id="pagination">';
+	echo '<div id="pagination" class="hidden-print">';
 	if (!empty($PreviousPage)) {
 		echo '<a class="page-action" rel="prev" href="' . $PreviousPage . '" title="View previous page">← Previous Page</a>';
 	}
