@@ -1015,10 +1015,6 @@ h3 {
 		background-color: white;
 	}
 
-	#header, #navigation {
-		display: none;
-	}
-
 	#content-wrapper,
 	#wrapper {
 		margin: 0;
