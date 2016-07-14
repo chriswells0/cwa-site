@@ -332,7 +332,7 @@ div.label {
 	clear: left;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
 	#content-wrapper > .actions {
 		padding-right: 40px;
 	}
@@ -359,13 +359,13 @@ div.label {
 	}
 }
 
-@media (max-width: 640px) {
+@media screen and (max-width: 640px) {
 	.hidden-tablet-portrait {
 		display: none;
 	}
 }
 
-@media (max-width: 520px) {
+@media screen and (max-width: 520px) {
 	#content-wrapper > .actions {
 		padding-right: 10px;
 	}
@@ -383,7 +383,7 @@ div.label {
 	}
 }
 
-@media (max-width: 420px) {
+@media screen and (max-width: 420px) {
 	.hidden-phone-portrait {
 		display: none;
 	}
@@ -516,7 +516,7 @@ form > .error {
 	clear: none;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
 	label {
 		float: none;
 		text-align: left;
@@ -532,7 +532,7 @@ form > .error {
 	}
 }
 
-@media (max-width: 500px) {
+@media screen and (max-width: 500px) {
 	#Name, #Slug, #Title, #Value, input.long {
 		width: auto;
 	}
@@ -593,7 +593,7 @@ form > .error {
 	width: 80%;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
 	#wrapper {
 		margin: 10px;
 	}
@@ -611,7 +611,7 @@ form > .error {
 	}
 }
 
-@media (max-width: 520px) {
+@media screen and (max-width: 520px) {
 	#content-wrapper {
 		margin-left: 50px;
 	}
@@ -738,7 +738,7 @@ form > .error {
 	float: right;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
 	.menu {
 		margin-left: 0;
 	}
@@ -793,7 +793,7 @@ form > .error {
 	}
 }
 
-@media (max-width: 520px) {
+@media screen and (max-width: 520px) {
 	.menu {
 		margin: 10px 0;
 	}
@@ -936,7 +936,7 @@ h3 {
 	font-size: 1.17em;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
 	h1 {
 		margin: 0 -8px;
 		padding: 0 8px 2px;
@@ -953,7 +953,7 @@ h3 {
 	}
 }
 
-@media (max-width: 520px) {
+@media screen and (max-width: 520px) {
 	h1 {
 		margin: 0 -5px;
 		padding: 0 5px 2px;
