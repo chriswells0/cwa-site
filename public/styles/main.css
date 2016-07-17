@@ -111,7 +111,11 @@ blockquote {
 	quotes: "\201C""\201D""\2018""\2019";
 }
 
-blockquote::before {
+blockquote > p:first-child {
+	margin-top: 5px;
+}
+
+blockquote > p:first-child::before {
 	color: #999;
 	content: open-quote;
 	font-size: 4em;
@@ -120,17 +124,17 @@ blockquote::before {
 	vertical-align: -0.4em;
 }
 
-blockquote::after {
+blockquote > p:last-child {
+	margin-bottom: 5px;
+}
+
+blockquote > p:last-child::after {
 	color: #999;
 	content: close-quote;
 	font-size: 4em;
 	line-height: 0.1em;
 	margin-left: .25em;
 	vertical-align: -0.4em;
-}
-
-blockquote > p {
-	display: inline;
 }
 
 cite, em {
