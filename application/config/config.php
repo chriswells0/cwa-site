@@ -25,10 +25,7 @@ define('SITE_SLOGAN', 'Welcome to my CWA Site!'); // Shown below SITE_NAME.
 define('SITE_TITLE', 'My CWA Site'); // Displayed in title bar.
 define('CONTACT_ANONYMOUS_FROM', '"Anonymous Visitor" <anonymous@' . SITE_DOMAIN . '>'); // For users that provide no email in the contact form.
 define('CONTACT_SENDTO', '"' . SITE_AUTHOR . '" <webmaster@' . SITE_DOMAIN . '>'); // "To" address for the contact form.
-/* Define these to enable reCAPTCHA on the contact form. -- cwells
-define('RECAPTCHA_PRIVATE_KEY', '');
-define('RECAPTCHA_PUBLIC_KEY', '');
-*/
+define('DATE_DB_TO_PHP', 'D., M. j, Y');
 
 
 // Determine the current domain, which may or may not be the production SITE_DOMAIN. -- cwells
@@ -43,6 +40,10 @@ define('PROTOCOL_HOST_PORT', 'https://' . DOMAIN);
 // Environment-specific constants:
 if (DOMAIN === SITE_DOMAIN) { // Production.
 	define('ANALYTICS_ID', '');
+	/* Define these to enable reCAPTCHA on the contact form. -- cwells
+	define('RECAPTCHA_PRIVATE_KEY', '');
+	define('RECAPTCHA_PUBLIC_KEY', '');
+	*/
 
 	// CWA Database connectivity parameters:
 	define('CWA\DB\HOST', 'localhost');
@@ -51,6 +52,10 @@ if (DOMAIN === SITE_DOMAIN) { // Production.
 	define('CWA\DB\PASSWORD', '');
 } else { // Non-production: dev/test/QA.
 //	define('ANALYTICS_ID', ''); Leave undefined in non-production. -- cwells
+	/* Define these to enable reCAPTCHA on the contact form. -- cwells
+	define('RECAPTCHA_PRIVATE_KEY', '');
+	define('RECAPTCHA_PUBLIC_KEY', '');
+	*/
 
 	// CWA Database connectivity parameters:
 	define('CWA\DB\HOST', 'localhost');
