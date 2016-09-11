@@ -114,13 +114,12 @@ class SiteController extends BaseController
 					$this->view->setStatus('Are you sure you\'re human?', 400);
 					$this->view->setData('captchaError', $response['error-codes']);
 				} else {
-					if ($params['anonymous']) {
-						$from = CONTACT_ANONYMOUS_FROM;
-					} else {
-						$from = '"' . $params['fromName'] . '" <' . $params['fromEmail'] . '>';
+					$headers = 'From: ' . CONTACT_SENDTO . "\r\n";
+					if (!$params['anonymous']) {
+						$headers .= 'Reply-To: "' . $params['fromName'] . '" <' . $params['fromEmail'] . ">\r\n";
 					}
 
-					if (mail(CONTACT_SENDTO, $params['subject'], $params['message'], "From: $from")) {
+					if (mail(CONTACT_SENDTO, $params['subject'], $params['message'], $headers)) {
 						$this->app->redirect('/site/contact/success'); // Redirect to the success page to prevent double posts. -- cwells
 					} else {
 						$this->view->setStatus('Failed to send your message. Please try again.', 500);
