@@ -145,9 +145,9 @@
 					label.addClass("error");
 					$("#" + errorID).remove();
 					$("<div />", {
-						id: errorID,
-						class: "error dynamic-error",
-						html: (message[0] === " " ? (label.text() + message) : message)
+						"id": errorID,
+						"class": "error dynamic-error",
+						"html": (message[0] === " " ? (label.text() + message) : message)
 					}).insertAfter(field);
 				},
 				setPatterns: function (newPatterns) {
@@ -317,14 +317,14 @@
 				load: function (url) {
 					// Add the modal element to the DOM if it does not already exist. -- cwells
 					if (jElement.length === 0) {
-						jElement = $("<div />", { id: "modal" }).appendTo($("#content-wrapper"));
-						modalContainer = $("<div />", { id: "modal-container" }).appendTo(jElement);
+						jElement = $("<div />", { "id": "modal" }).appendTo($("#content-wrapper"));
+						modalContainer = $("<div />", { "id": "modal-container" }).appendTo(jElement);
 						modalBusy = $("<div />", {
-							id: "modal-busy",
-							class: "content loading",
-							html: '<img src="/images/loading.gif" />'
+							"id": "modal-busy",
+							"class": "content loading",
+							"html": '<img src="/images/loading.gif" />'
 						}).appendTo(modalContainer);
-						modalContent = $("<div />", { id: "modal-content" }).appendTo(modalContainer);
+						modalContent = $("<div />", { "id": "modal-content" }).appendTo(modalContainer);
 					}
 
 					CWA.MVC.View.activeModal = this;
@@ -344,24 +344,24 @@
 										});
 										form.on("cwa-form-submit-failure", function (e, response) {
 											$("<div />", {
-												id: "modal-error",
-												class: "error",
-												html: response.status.message
+												"id": "modal-error",
+												"class": "error",
+												"html": response.status.message
 											}).prependTo(form.$);
 											self.showContent();
 										});
 										form.on("cwa-form-submit-success", function (e, response) {
 											if (response.status.message) {
 												var button = $("<div />", {
-													class: "buttons"
+													"class": "buttons"
 												}).append($("<button />", {
-													type: "button",
-													text: "Close"
+													"type": "button",
+													"text": "Close"
 												}));
 												$("<div />", {
-													id: "modal-success"
+													"id": "modal-success"
 												}).append($("<p />", {
-													html: response.status.message
+													"html": response.status.message
 												})).append(button).insertAfter(form.$);
 												$("#modal-success > .buttons > button").on("click", function () { CWA.MVC.View.activeModal.close(); });
 												form.$.hide();
