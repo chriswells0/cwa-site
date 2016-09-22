@@ -63,6 +63,9 @@ RewriteRule ^application/main\.php - [L]
 RewriteCond %{DOCUMENT_ROOT}/public/%{REQUEST_URI} -f
 RewriteRule ^(.+)$ public/$1 [QSA,L]
 
+# Uncomment to enable maintenance mode:
+#RewriteRule ^.*$ /application/main.php?controller=site&method=maintenance [QSA,L]
+
 # All other URLs:
 # If there is only one "directory" in the URL path, use it as the controller name and call its default method.
 RewriteRule ^([^/]*)/?$ /application/main.php?controller=$1&method=index [QSA,L]

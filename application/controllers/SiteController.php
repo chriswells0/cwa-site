@@ -35,6 +35,8 @@ class SiteController extends BaseController
 		$this->viewInfo['credits']['description'] = 'Credits for 3rd-party resources used on ' . SITE_DOMAIN . '.';
 		$this->viewInfo['index']['title'] = 'Home Page';
 		$this->viewInfo['index']['description'] = 'Home page on my site.';
+		$this->viewInfo['maintenance']['title'] = 'Site Maintenance';
+		$this->viewInfo['maintenance']['description'] = SITE_DOMAIN . ' is down for maintenance.';
 		$this->viewInfo['map']['title'] = 'Site Map';
 		$this->viewInfo['map']['description'] = 'List of all main pages on my site.';
 	}
@@ -138,6 +140,10 @@ class SiteController extends BaseController
 
 	public function index() {
 		parent::index();
+	}
+
+	public function maintenance($hideFromSiteMap) { // Requiring a parameter prevents this method from appearing in the site map. -- cwells
+		$this->loadView('maintenance');
 	}
 
 	public function map() {
