@@ -4,7 +4,7 @@
 <?php
 if (!empty($AdminMethods)) {
 ?>
-						<p>The following tools are available to administer this site:</p>
+						<h2>Tools</h2>
 						<ul>
 <?php
 	foreach ($AdminMethods as $name => $url) {
@@ -19,9 +19,7 @@ if (!empty($AdminMethods)) {
 
 if (!empty($ModelAdminURLs)) {
 ?>
-						<!-- p>Select an object type to administer:</p -->
-						<!-- p>These controllers provide an admin method:</p -->
-						<p>You may administer the following types of objects in the database:</p>
+						<h2>Data Types</h2>
 						<ul>
 <?php
 	foreach ($ModelAdminURLs as $modelName => $url) {
