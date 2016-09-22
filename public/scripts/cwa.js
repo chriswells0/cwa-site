@@ -309,7 +309,6 @@
 				close: function () {
 					CWA.MVC.View.activeModal = null;
 					this.showBusy();
-
 					jElement.fadeOut(function () {
 						jElement.trigger("cwa-modal-closed");
 						jElement.remove();
@@ -344,15 +343,32 @@
 											$("#modal-error").remove();
 										});
 										form.on("cwa-form-submit-failure", function (e, response) {
-											var error = $("<div />", {
+											$("<div />", {
 												id: "modal-error",
-												class: "error"
+												class: "error",
+												html: response.status.message
 											}).prependTo(form.$);
-											error.html(response.status.message);
 											self.showContent();
 										});
-										form.on("cwa-form-submit-success", function (e) {
-											self.close();
+										form.on("cwa-form-submit-success", function (e, response) {
+											if (response.status.message) {
+												var button = $("<div />", {
+													class: "buttons"
+												}).append($("<button />", {
+													type: "button",
+													text: "Close"
+												}));
+												$("<div />", {
+													id: "modal-success"
+												}).append($("<p />", {
+													html: response.status.message
+												})).append(button).insertAfter(form.$);
+												$("#modal-success > .buttons > button").on("click", function () { CWA.MVC.View.activeModal.close(); });
+												form.$.hide();
+												self.showContent();
+											} else {
+												self.close();
+											}
 										});
 									}
 								});
