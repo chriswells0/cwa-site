@@ -116,12 +116,17 @@ class SiteController extends BaseController
 					$this->view->setStatus('Are you sure you\'re human?', 400);
 					$this->view->setData('captchaError', $response['error-codes']);
 				} else {
-					$headers = 'From: ' . CONTACT_SENDTO . "\r\n";
+					require_once LIB_PATH . 'PHPMailer/class.phpmailer.php';
+					$email = new PHPMailer();
+					$email->setFrom(CONTACT_EMAIL, CONTACT_NAME);
+					$email->addAddress(CONTACT_EMAIL, CONTACT_NAME);
+					$email->Subject = $params['subject'];
+					$email->Body = $params['message'];
 					if (!$params['anonymous']) {
-						$headers .= 'Reply-To: "' . $params['fromName'] . '" <' . $params['fromEmail'] . ">\r\n";
+						$email->addReplyTo($params['fromEmail'], $params['fromName']);
 					}
 
-					if (mail(CONTACT_SENDTO, $params['subject'], $params['message'], $headers)) {
+					if ($email->send()) {
 						$this->app->redirect('/site/contact/success'); // Redirect to the success page to prevent double posts. -- cwells
 					} else {
 						$this->view->setStatus('Failed to send your message. Please try again.', 500);

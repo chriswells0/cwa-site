@@ -23,7 +23,8 @@ define('SITE_DOMAIN', 'example.com'); // Must be the production domain.
 define('SITE_NAME', 'My CWA Site'); // Displayed at the top of every page.
 define('SITE_SLOGAN', 'Welcome to my CWA Site!'); // Shown below SITE_NAME.
 define('SITE_TITLE', 'My CWA Site'); // Displayed in title bar.
-define('CONTACT_SENDTO', '"' . SITE_AUTHOR . '" <webmaster@' . SITE_DOMAIN . '>'); // "To" address for the contact form.
+define('CONTACT_EMAIL', 'webmaster@' . SITE_DOMAIN); // "To" and "From" address for the contact form.
+define('CONTACT_NAME', SITE_AUTHOR); // Used with CONTACT_EMAIL in the contact form.
 define('DATE_DB_TO_PHP', 'D., M. j, Y');
 
 
