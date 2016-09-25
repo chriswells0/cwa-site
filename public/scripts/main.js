@@ -69,7 +69,7 @@ $(document).ready(function () {
 				body_class: "content",
 				body_id: "wrapper",
 				browser_spellcheck: true,
-				content_css: "/styles/all.min.css?nocache=" + Math.random(),
+				content_css: "/styles/all.css?nocache=" + Math.random(),
 				convert_urls: false,
 				importcss_append: true,
 				importcss_groups: [{title: "Custom Styles"}],
