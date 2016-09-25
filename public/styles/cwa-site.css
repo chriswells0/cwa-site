@@ -481,6 +481,7 @@ textarea {
 }
 
 textarea[data-html-editor='true'] {
+	height: 400px;
 	visibility: hidden;
 }
 
@@ -526,7 +527,7 @@ form > .error {
 	padding-left: 155px;
 }
 
-#Name, #Slug, #Title, #Value, input.long {
+input.long {
 	width: 280px;
 }
 
@@ -549,13 +550,13 @@ form > .error {
 		clear: left;
 	}
 
-	#Name, #Slug, #Title, #Value, input.long {
+	input.long {
 		width: 275px;
 	}
 }
 
 @media screen and (max-width: 500px) {
-	#Name, #Slug, #Title, #Value, input.long {
+	input.long {
 		width: auto;
 	}
 }

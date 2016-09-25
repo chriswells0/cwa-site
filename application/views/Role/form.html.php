@@ -12,7 +12,7 @@ require_once 'views/_shared/status.html.php';
 						</div>
 						<div class="form-field">
 							<label for="Name">Name</label>
-							<input type="text" name="Name" id="Name" size="15" value="<?= $Role->Name ?>" placeholder="Proper Name" required minlength="2" maxlength="30" />
+							<input type="text" name="Name" id="Name" class="long" size="15" value="<?= $Role->Name ?>" placeholder="Proper Name" required minlength="2" maxlength="30" />
 						</div>
 						<div class="form-field">
 							<label for="Description">Description</label>
