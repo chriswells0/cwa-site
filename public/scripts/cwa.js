@@ -299,6 +299,10 @@
 	};
 
 	CWA.MVC.View.Modal = function () {
+		function adjustHeight() {
+			jElement.find("#modal-content > .content").css("max-height", (screen.height - 50) + "px");
+		}
+
 		// Private variables and the main object, which is returned as a public instance:
 		var jElement = $("#modal"),
 			modalBusy = $("#modal-busy"),
@@ -313,6 +317,7 @@
 						jElement.trigger("cwa-modal-closed");
 						jElement.remove();
 					});
+					$(window).off("resize", adjustHeight);
 				},
 				load: function (url) {
 					// Add the modal element to the DOM if it does not already exist. -- cwells
@@ -382,6 +387,8 @@
 								e.stopPropagation();
 								self.close();
 							});
+							adjustHeight();
+							$(window).on("resize", adjustHeight);
 							self.showContent(); // Content must be visible in order to set focus to an element. -- cwells
 							jElement.find("[autofocus]").focus();
 							jElement.trigger("cwa-modal-loaded");

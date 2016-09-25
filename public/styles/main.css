@@ -602,7 +602,7 @@ form > .error {
 
 #modal {
 	background-color: rgba(238, 238, 238, 0.8);
-	display: none;
+	display: table;
 	height: 100%;
 	left: 0;
 	overflow: auto;
@@ -612,8 +612,18 @@ form > .error {
 }
 
 #modal-container {
-	margin: auto;
-	width: 80%;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#modal-busy, #modal-content {
+	display: table;
+	margin: 0 auto;
+	max-width: 80%;
+}
+
+#modal-content > .content {
+	margin: 0;
 }
 
 @media screen and (max-width: 800px) {
@@ -631,6 +641,10 @@ form > .error {
 
 	.content-body {
 		margin: 20px 10px;
+	}
+
+	#modal-busy, #modal-content {
+		min-width: 60%;
 	}
 }
 
