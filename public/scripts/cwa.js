@@ -325,6 +325,11 @@
 							"html": '<img src="/images/loading.gif" />'
 						}).appendTo(modalContainer);
 						modalContent = $("<div />", { "id": "modal-content" }).appendTo(modalContainer);
+						modalContainer.on("click", function (e) {
+							if (e.currentTarget === e.target) {
+								CWA.MVC.View.activeModal.close();
+							}
+						});
 					}
 
 					CWA.MVC.View.activeModal = this;
