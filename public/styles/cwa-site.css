@@ -424,7 +424,7 @@ button[type='submit'] {
 
 fieldset {
 	border: 1px solid #808080;
-	margin: 10px;
+	margin: 20px;
 	padding: 10px;
 }
 
@@ -540,6 +540,10 @@ input.long {
 }
 
 @media screen and (max-width: 800px) {
+	fieldset {
+		margin: 20px 10px;
+	}
+
 	label {
 		float: none;
 		text-align: left;
@@ -556,6 +560,10 @@ input.long {
 }
 
 @media screen and (max-width: 500px) {
+	fieldset {
+		margin: 20px 0;
+	}
+
 	input.long {
 		width: auto;
 	}
