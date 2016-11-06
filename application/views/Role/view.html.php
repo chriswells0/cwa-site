@@ -9,19 +9,20 @@ require_once 'views/_shared/status.html.php';
 						|
 						<a class="delete" href="/roles/delete/<?= strtolower($Role->Type) ?>" title="Delete this item">Delete</a>
 					</div>
-					<p>
-						<div class="label">Created:</div><?= $Role->Created ?>
-						<br />
-						<div class="label">Updated:</div><?= $Role->Updated ?>
-						<br />
-						<div class="label">Type:</div><?= $Role->Type ?>
-						<br />
-						<div class="label">Name:</div><?= $Role->Name ?>
-						<br />
-						<div class="label">Description:</div><?= $Role->Description ?>
-					</p>
-					<h2>Users in Role</h2>
-					<ul>
+					<div class="content-body">
+						<p>
+							<div class="label">Created:</div><?= $Role->Created ?>
+							<br />
+							<div class="label">Updated:</div><?= $Role->Updated ?>
+							<br />
+							<div class="label">Type:</div><?= $Role->Type ?>
+							<br />
+							<div class="label">Name:</div><?= $Role->Name ?>
+							<br />
+							<div class="label">Description:</div><?= $Role->Description ?>
+						</p>
+						<h2>Users in Role</h2>
+						<ul>
 <?php
 $output = '';
 $users = $Role->Users;
@@ -35,5 +36,6 @@ if ($lastIndex === -1) {
 }
 echo $output;
 ?>
-					</ul>
+						</ul>
+					</div>
 				</div>
