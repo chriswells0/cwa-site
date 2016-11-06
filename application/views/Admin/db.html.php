@@ -51,42 +51,46 @@ if (isset($DBError)) {
 <?php
 }
 
-if (!empty($Result)) {
+if (isset($Result)) {
+	if (is_bool($Result)) {
+		echo '						' . ($Result ? '<p class="label">Successfully executed the provided query.</p>' : '<p class="error">Failed to execute the provided query.</p>') . PHP_EOL;
+	} else {
 ?>
 						<div id="db-results">
 							<table>
 								<thead>
 									<tr>
 <?php
-	$columns = array_keys($Result[0]);
-	foreach ($columns as $column) {
+		$columns = array_keys($Result[0]);
+		foreach ($columns as $column) {
 ?>
 										<th><?= $column ?></th>
 <?php
-	}
+		}
 ?>
 									</tr>
 								</thead>
 								<tbody>
 <?php
-	foreach ($Result as $record) {
+		foreach ($Result as $record) {
 ?>
 									<tr>
 <?php
-		foreach ($record as $column => $value) {
+			foreach ($record as $column => $value) {
 ?>
 										<td><?= $value ?></td>
 <?php
-		}
+			}
 ?>
 									</tr>
 <?php
-	}
+		}
 ?>
 								</tbody>
 							</table>
 						</div>
 <?php
+	}
 }
 ?>
 					</div>
