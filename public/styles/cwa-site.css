@@ -292,11 +292,15 @@ div.label {
 	display: none;
 }
 
+.visual-wrapper {
+	text-align: center;
+}
+
 .visual {
 	border: 1px solid #808080;
 	border-radius: 5px;
 	box-sizing: border-box;
-	display: table;
+	display: inline-block;
 	margin: 20px auto;
 	max-width: 100%;
 	padding: 5px;
@@ -323,7 +327,6 @@ div.label {
 	font-style: italic;
 	font-weight: bold;
 	margin: 5px 0;
-	text-align: center;
 }
 
 .visual + p::before {
@@ -579,11 +582,8 @@ input.long {
 }
 
 #content-wrapper {
-	left: 0;
-	margin: 0 20px 0 180px;
-	position: absolute;
-	right: 0;
-	top: 75px;
+	margin-left: 160px;
+	position: static;
 }
 
 .sidebar {
@@ -641,7 +641,7 @@ input.long {
 	}
 
 	#content-wrapper {
-		margin-left: 100px;
+		margin-left: 90px;
 	}
 
 	.content {
@@ -659,7 +659,7 @@ input.long {
 
 @media screen and (max-width: 520px) {
 	#content-wrapper {
-		margin-left: 50px;
+		margin-left: 45px;
 	}
 
 	.content {
@@ -900,6 +900,10 @@ h3 {
 	text-decoration: underline;
 }
 
+.heading-addon + h2 {
+	clear: left;
+}
+
 #header {
 	line-height: normal;
 	margin-bottom: 20px;
@@ -970,7 +974,7 @@ h3 {
 #footer {
 	clear: both;
 	font-size: .83em;
-	height: 30px;
+	overflow: hidden;
 	text-align: center;
 }
 
