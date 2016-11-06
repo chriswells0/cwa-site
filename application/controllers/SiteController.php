@@ -70,13 +70,14 @@ class SiteController extends BaseController
 			$params['subject'] = str_ireplace('"', '', $params['subject']);
 			if ($this->view->getFormat() !== 'json') $this->view->setData($params); // In case we need to display the data on an error screen.
 
+			$fromEmailParts = explode('@', $params['fromEmail']);
 			if (!$params['anonymous'] && (empty($params['fromName']) || empty($params['fromEmail']))) {
 				$this->view->setStatus('If you do not wish to remain anonymous, your name and email address are required.', 400);
 			} else if (!$params['anonymous'] && preg_match('/(\r|\n|%0A|%0D)/i', $params['fromName']) === 1) {
 				$this->view->setStatus('If you do not wish to remain anonymous, you must provide a valid name.', 400);
 			} else if (!$params['anonymous']
 						&& (filter_var($params['fromEmail'], FILTER_VALIDATE_EMAIL) === false
-						|| checkdnsrr(array_pop(explode('@', $params['fromEmail']))) === false)) {
+						|| checkdnsrr(array_pop($fromEmailParts)) === false)) {
 				$this->view->setStatus('If you do not wish to remain anonymous, you must provide a valid email address.', 400);
 			} else if (empty($params['message'])) {
 				$this->view->setStatus('Nothing worthwhile to say?', 400);
@@ -93,8 +94,8 @@ class SiteController extends BaseController
 					//$response = json_decode(file_get_contents($verifyURL), true);
 
 					$options = array(CURLOPT_URL => $verifyURL,
-									CURLOPT_CONNECTTIMEOUT => 5,
-									CURLOPT_RETURNTRANSFER => true);
+									 CURLOPT_CONNECTTIMEOUT => 5,
+									 CURLOPT_RETURNTRANSFER => true);
 					$ch = curl_init();
 					if (curl_setopt_array($ch, $options)) {
 						$response = curl_exec($ch);
@@ -114,7 +115,9 @@ class SiteController extends BaseController
 
 				if (!$validCAPTCHA) {
 					$this->view->setStatus('Are you sure you\'re human?', 400);
-					$this->view->setData('captchaError', $response['error-codes']);
+					if (isset($response['error-codes'])) {
+						$this->view->setData('captchaError', $response['error-codes']);
+					}
 				} else {
 					require_once LIB_PATH . 'PHPMailer/class.phpmailer.php';
 					$email = new PHPMailer();
