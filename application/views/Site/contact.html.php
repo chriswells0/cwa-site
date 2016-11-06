@@ -110,10 +110,11 @@ $("#contact-form").on("submit", function (e) {
 			if (data.status && data.status.code === 200) {
 				$("#loading").text(data.status.message);
 			} else {
-				var response = data.responseJSON || { "status": { "message": "An unspecified error has occurred. Please try again." }};
+				var genericError = "An unspecified error has occurred. Please verify that you're not sending any code or special characters and then try again.",
+					response = data.responseJSON || { "status": { "message": genericError }};
 				$("#loading").hide();
 				$("#contact-form").show();
-				$("#form-error").text(response.status.message);
+				$("#form-error").text(response.status.message || genericError);
 			}
 		});
 	}
