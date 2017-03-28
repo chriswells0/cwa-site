@@ -73,7 +73,7 @@ $(document).ready(function () {
 				convert_urls: false,
 				importcss_append: true,
 				importcss_groups: [{title: "Custom Styles"}],
-				plugins: "code fullscreen image importcss link preview table wordcount",
+				plugins: "code fullscreen image importcss link lists preview table wordcount",
 				rel_list: [
 					{ title: "None", value: "" },
 					{ title: "External", value: "external" },
