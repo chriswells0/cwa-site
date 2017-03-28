@@ -28,8 +28,8 @@
 										<option value="NO">hide PHP errors</option>
 									</select>
 									<select id="stack-traces">
-										<option value="YES">show stack traces</option>
 										<option value="NO">hide stack traces</option>
+										<option value="YES">show stack traces</option>
 									</select>
 								</div>
 								<div class="buttons">
@@ -80,11 +80,13 @@ $("#filter").on("click", function () {
 
 	$("#file-contents").text(filteredLines.join("\n"));
 	return false;
-});
+}).click();
 
-$("#reset").on("click", function () {
+$("#log-viewer").on("reset", function () {
 	$("#file-contents").text("Loading...");
-	$("#file-contents").text(logLines.join("\n"));
+	window.setTimeout(function () {
+		$("#filter").click();
+	}, 0); // Allow the reset to complete before applying the filter again. -- cwells
 });
 
 $("#delete").on("click", function () {
