@@ -392,8 +392,12 @@ div.label {
 }
 
 @media screen and (max-width: 520px) {
+	html, body {
+		background-color: #fff;
+	}
+
 	#content-wrapper > .actions {
-		padding-right: 10px;
+		padding: 15px 10px 0 0;
 	}
 
 	.hidden-phone {
@@ -645,7 +649,8 @@ input.long {
 	max-width: 80%;
 }
 
-#modal-content > .content {
+#modal-content > .content,
+#modal-content > .content > .content-body {
 	margin: 0;
 }
 
@@ -658,27 +663,32 @@ input.long {
 		margin-left: 90px;
 	}
 
-	.content {
-		padding: 20px;
-	}
-
-	.content-body {
-		margin: 20px 10px;
-	}
-
 	#modal-busy, #modal-content {
 		min-width: 60%;
 	}
 }
 
 @media screen and (max-width: 520px) {
+	#wrapper {
+		margin: 0;
+	}
+
 	#content-wrapper {
-		margin-left: 45px;
+		margin: 65px 0 50px;
 	}
 
 	.content {
-		margin: 20px 0;
-		padding: 10px;
+		border: none;
+		border-bottom: 1px solid #ccc;
+		border-radius: unset;
+		box-shadow: unset;
+		margin: 0;
+	}
+
+	#modal-content > .content {
+		border: 1px solid #808080;
+		border-radius: 10px;
+		box-shadow: 2px 3px 5px;
 	}
 }
 
@@ -783,7 +793,7 @@ input.long {
 	float: right;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 521px) and (max-width: 800px) {
 	.menu {
 		margin-left: 0;
 	}
@@ -838,61 +848,61 @@ input.long {
 }
 
 @media screen and (max-width: 520px) {
-	.menu {
-		margin: 20px 0;
-	}
-
-	.menu-item {
-		height: 30px;
-		line-height: 2.5em;
-		margin-top: 0;
-		overflow: hidden;
-		padding: 2px 0 2px 36px;
-	}
-
-	.menu > .icon {
+	#flapjacks {
+		box-shadow: 0px 2px 3px #999, inset 0px 2px 3px #fff;
+		color: #333;
 		display: block;
-		margin: 0 auto !important;
+		font-size: 28px;
+		line-height: 30px;
+		outline: none;
+		position: fixed;
+		right: 15px;
+		text-align: center;
+		text-decoration: none;
+		top: 15px;
+		width: 30px;
+	}
+
+	#flapjacks.pressed {
+		border-top: 1px solid #999;
+		box-shadow: inset 0px -1px 2px #999;
 	}
 
 	#navigation {
-		left: 10px;
+		background-color: #eee;
+		border: none;
+		bottom: 60px;
+		box-shadow: -2px 3px 3px;
+		overflow-y: auto;
+		padding: 0 10px;
+		position: fixed;
+		right: 0;
+		top: 66px;
+		z-index: 100;
 	}
 
 	#menu-primary {
-		margin-top: 51px;
-		overflow: hidden;
-		padding: 0;
-		width: 35px;
-	}
-
-	#menu-about {
-		background-position: 6px -156px;
-	}
-
-	#menu-admin {
-		background-position: -129px -272px;
-	}
-
-	#menu-contact {
-		background-position: 6px -102px;
-	}
-
-	#menu-home {
-		background-position: -130px 6px;
-	}
-
-	#menu-logout {
-		background-position: 6px -272px;
+		margin-top: 0;
 	}
 
 	#pagination {
 		font-size: .9em;
-		padding: 0 2% 20px;
+		padding: 20px 2%;
 	}
 
 	.page-action {
+		box-shadow: unset;
 		padding: 0 5px;
+	}
+
+	.page-action:hover {
+		box-shadow: unset;
+	}
+}
+
+@media screen and (max-width: 520px) and (max-height: 480px) {
+	.menu {
+		margin: 20px 0;
 	}
 }
 
@@ -958,7 +968,7 @@ h3 {
 	float: left;
 	padding-top: 10px;
 	text-align: center;
-	width: 300px;
+	width: 360px;
 }
 
 #site-name {
@@ -979,34 +989,39 @@ h3 {
 }
 
 @media screen and (max-width: 800px) {
-	h1 {
-		margin: 0 -8px;
-		padding: 0 8px 2px;
-	}
-
 	.heading-addon {
 		display: block;
 		float: none;
 		text-align: right;
 	}
+}
 
+@media screen and (min-width: 521px) and (max-width: 800px) {
 	#site-title {
-		width: 210px;
+		max-width: 360px;
+		min-width: 250px;
+		width: 45%;
 	}
 }
 
 @media screen and (max-width: 520px) {
-	h1 {
-		margin: 0 -5px;
-		padding: 0 5px 2px;
-	}
-
 	#header {
+		background-color: #eee;
+		border-bottom: 1px solid #999;
+		box-shadow: 0 2px 5px;
 		margin-bottom: 0;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 90;
 	}
 
 	#site-title {
 		width: 100%;
+	}
+
+	#site-name {
+		border: none;
 	}
 }
 
@@ -1019,6 +1034,18 @@ h3 {
 	font-size: .83em;
 	overflow: hidden;
 	text-align: center;
+}
+
+@media screen and (max-width: 520px) {
+	#footer {
+		background-color: #eee;
+		border-top: 1px solid #999;
+		bottom: 0;
+		box-shadow: 0 -2px 5px;
+		position: fixed;
+		width: 100%;
+		z-index: 90;
+	}
 }
 
 /* --------------------------------------------------

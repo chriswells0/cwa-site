@@ -290,6 +290,27 @@
 				CWA.MVC.View.updateSlug.call(this, e);
 			}
 		},
+		toggleNavigation: function (e) {
+			e.preventDefault();
+			var icon = $("#flapjacks"),
+				menu = $("#navigation");
+
+			function hideNavigation(e) {
+				if (!$.contains(menu.get(0), e.target) && menu.get(0) !== e.target) {
+					icon.removeClass("pressed");
+					menu.addClass("hidden-phone");
+					$(document).off("click", hideNavigation);
+				}
+			}
+
+			if (menu.is(":visible")) {
+				hideNavigation(e);
+			} else {
+				icon.addClass("pressed");
+				menu.removeClass("hidden-phone");
+				$(document).on("click", hideNavigation);
+			}
+		},
 		updateSlug: function (e) {
 			e.preventDefault();
 			var from = $("#" + this.dataset.from),

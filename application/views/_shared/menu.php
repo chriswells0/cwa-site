@@ -1,4 +1,4 @@
-			<div id="navigation" class="sidebar hidden-print">
+			<div id="navigation" class="sidebar hidden-phone hidden-print">
 				<ul id="menu-primary" class="menu">
 					<li><a id="menu-home" href="/site" title="Return to Home" class="menu-item <?= $_GET['controller'] === 'site' && $_GET['method'] === 'index' ? 'selected' : '' ?>">Home</a></li>
 					<li><a id="menu-about" href="/site/about" title="Learn more about me and my site" class="menu-item <?= $_GET['method'] === 'about' ? 'selected' : '' ?>">About</a></li>
