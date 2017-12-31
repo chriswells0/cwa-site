@@ -29,7 +29,7 @@ if (count($UserList) === 0) {
 		$nickname = strtolower($User->Nickname);
 ?>
 							<tr>
-								<td><a href="/users/view/<?= $nickname ?>" title="View details for this item"><?= $User->Nickname ?></a></td>
+								<td><a href="/users/<?= $nickname ?>" title="View details for this item"><?= $User->Nickname ?></a></td>
 								<td class="hidden-tablet-portrait"><?= $User->FirstName ?></td>
 								<td class="hidden-tablet-portrait"><?= $User->LastName ?></td>
 								<td class="hidden-phone-portrait"><?= $User->EmailAddress ?></td>

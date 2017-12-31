@@ -28,7 +28,7 @@ foreach ($Controllers as $controller => $methods) {
 			echo 'Must Log In';
 		} else {
 			foreach ($method['roles'] as $index => $role) {
-				echo "<a href=\"/roles/view/" . strtolower($role) . "\" target=\"_blank\" title=\"Opens in new window\">$role</a>";
+				echo "<a href=\"/roles/" . strtolower($role) . "\" target=\"_blank\" title=\"Opens in new window\">$role</a>";
 				if (($index + 1) !== count($method['roles'])) {
 					echo ', ';
 				}

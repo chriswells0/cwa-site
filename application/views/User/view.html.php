@@ -40,7 +40,7 @@ if ($lastIndex === -1) {
 	$output = '<li>NONE</li>';
 } else {
 	for ($i = 0; $i <= $lastIndex; $i++) {
-		$output .= '<li><a href="/roles/view/' . strtolower($roles[$i]->Type) . '" title="View users with this role">' . $this->sanitize($roles[$i]->Name) . '</a></li>';
+		$output .= '<li><a href="/roles/' . strtolower($roles[$i]->Type) . '" title="View users with this role">' . $this->sanitize($roles[$i]->Name) . '</a></li>';
 	}
 }
 echo $output;

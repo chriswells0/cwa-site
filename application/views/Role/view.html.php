@@ -31,7 +31,7 @@ if ($lastIndex === -1) {
 	$output = '<li>NONE</li>';
 } else {
 	for ($i = 0; $i <= $lastIndex; $i++) {
-		$output .= '<li><a href="/users/view/' . strtolower($users[$i]->Nickname) . '" title="View user">' . $this->sanitize($users[$i]->Nickname) . '</a></li>';
+		$output .= '<li><a href="/users/' . strtolower($users[$i]->Nickname) . '" title="View user">' . $this->sanitize($users[$i]->Nickname) . '</a></li>';
 	}
 }
 echo $output;

@@ -27,7 +27,7 @@ class RoleController extends BaseDBController
 		parent::__construct();
 		$this->viewInfo['view']['title'] = '{Name} :: Roles';
 		$this->viewInfo['view']['description'] = '{Name}';
-		$this->viewInfo['view']['canonicalURL'] = PROTOCOL_HOST_PORT . "$this->pathInURL/view/{Type}";
+		$this->viewInfo['view']['canonicalURL'] = PROTOCOL_HOST_PORT . "$this->pathInURL/{Type}";
 	}
 
 

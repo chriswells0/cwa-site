@@ -26,7 +26,7 @@ if (count($RoleList) === 0) {
 	foreach ($RoleList as $Role) {
 ?>
 							<tr>
-								<td><a href="/roles/view/<?= strtolower($Role->Type) ?>" title="View details for this item"><?= $Role->Name ?></a></td>
+								<td><a href="/roles/<?= strtolower($Role->Type) ?>" title="View details for this item"><?= $Role->Name ?></a></td>
 								<td class="hidden-phone-portrait"><?= $Role->Description ?></td>
 								<td>
 									<div class="actions">

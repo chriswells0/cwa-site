@@ -28,7 +28,7 @@ class UserController extends BaseDBController
 		parent::__construct();
 		$this->viewInfo['view']['title'] = '{Nickname} :: Users';
 		$this->viewInfo['view']['description'] = '{Nickname}';
-		$this->viewInfo['view']['canonicalURL'] = PROTOCOL_HOST_PORT . "$this->pathInURL/view/{Nickname}";
+		$this->viewInfo['view']['canonicalURL'] = PROTOCOL_HOST_PORT . "$this->pathInURL/{Nickname}";
 	}
 
 
